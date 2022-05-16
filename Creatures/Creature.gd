@@ -1,13 +1,5 @@
-extends Node2D
+extends Unit
 class_name Creature
-
-enum ALLIANCE {
-	FRIEND,
-	FOE
-}
-
-export(ALLIANCE) var alliance = ALLIANCE.FRIEND setget set_alliance
-export(Resource) var stats setget set_stats
 
 var targets = []
 
@@ -15,7 +7,6 @@ onready var sprite: = $Sprite
 onready var targetFinder: = $TargetFinder
 onready var defaultTarget: = $DefaultTarget
 onready var attackTimer: = $AttackTimer
-onready var healthBar: = $HealthBar
 
 func set_alliance(value):
 	alliance = value
@@ -35,12 +26,6 @@ func update_direction_facing(direction):
 	var defaultTarget = find_node("DefaultTarget")
 	if defaultTarget is Position2D: defaultTarget.position.x = direction * 32
 
-func _ready():
-	self.stats = stats.duplicate()
-	if stats is CreatureStats:
-		stats.connect("no_health", self, "queue_free")
-		stats.connect("health_changed", self, "update_health_bar")
-
 func _physics_process(delta):
 	var target = prioritize_target()
 	var target_direction = target.global_position - global_position
@@ -56,8 +41,16 @@ func _physics_process(delta):
 		set_physics_process(true)
 
 func prioritize_target():
-	if targets.empty(): return defaultTarget
-	return targets.front()
+	var enemy_distance = 1000
+	var nearest_enemy
+	for target in targets:
+		if target.alliance == alliance: continue
+		var distance = global_position.distance_to(target.global_position)
+		if distance < enemy_distance:
+			enemy_distance = distance
+			nearest_enemy = target
+	if nearest_enemy != null: return nearest_enemy
+	return defaultTarget
 
 func update_health_bar(health, health_change):
 	healthBar.max_value = stats.max_health

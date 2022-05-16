@@ -61,10 +61,17 @@ texture = ExtResource( 3 )
 position = Vector2( 216, 136 )
 stats = ExtResource( 5 )
 
+[node name="Creature4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 144 )
+
+[node name="Creature5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 400, 136 )
+alliance = 2
+
 [node name="Creature2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 344, 112 )
-alliance = 1
+alliance = 2
 
 [node name="Creature3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 464, 152 )
-alliance = 1
+alliance = 2
