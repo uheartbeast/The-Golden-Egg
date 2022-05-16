@@ -12,7 +12,7 @@ onready var healthBar: = $HealthBar
 func set_alliance(value):
 	alliance = value
 	match alliance:
-		ALLIANCE.FRIEND: update_direction_facing(1)
+		ALLIANCE.FRIEND:update_direction_facing(1)
 		ALLIANCE.FOE: update_direction_facing(-1)
 
 func set_stats(value):

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CardStack.gd" type="Script" id=1]
+[ext_resource path="res://Cards/Card.png" type="Texture" id=2]
+
+[node name="CardStack" type="TextureRect"]
+self_modulate = Color( 0.352941, 0.286275, 0.286275, 1 )
+margin_right = 64.0
+margin_bottom = 96.0
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+margin_right = 64.0
+margin_bottom = 96.0
+text = "DRAW"
+align = 1
+valign = 1
+
+[connection signal="gui_input" from="." to="." method="_on_CardStack_gui_input"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

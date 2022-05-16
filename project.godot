@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Tower",
+"class": "Base",
+"language": "GDScript",
+"path": "res://Battle/Base.gd"
+}, {
+"base": "Control",
+"class": "Card",
+"language": "GDScript",
+"path": "res://Cards/Card.gd"
+}, {
 "base": "Node",
 "class": "Command",
 "language": "GDScript",
@@ -23,6 +33,11 @@ _global_script_classes=[ {
 "class": "CreatureStats",
 "language": "GDScript",
 "path": "res://Creatures/CreatureStats.gd"
+}, {
+"base": "Resource",
+"class": "Deck",
+"language": "GDScript",
+"path": "res://Deck.gd"
 }, {
 "base": "Resource",
 "class": "Stats",
@@ -40,9 +55,12 @@ _global_script_classes=[ {
 "path": "res://Unit.gd"
 } ]
 _global_script_class_icons={
+"Base": "",
+"Card": "",
 "Command": "",
 "Creature": "",
 "CreatureStats": "",
+"Deck": "",
 "Stats": "",
 "Tower": "",
 "Unit": ""
@@ -53,6 +71,10 @@ _global_script_class_icons={
 config/name="Lane Deckbuilder"
 run/main_scene="res://Battle.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+ReferenceStash="*res://ReferenceStash.gd"
 
 [display]
 
@@ -87,11 +109,26 @@ texture={
 "svg/scale": 1.0
 }
 
+[input]
+
+mouse_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+mouse_right={
+"deadzone": 0.5,
+"events": [  ]
+}
+
 [layer_names]
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Hurtbox"
 2d_physics/layer_3="Hitbox"
+2d_physics/layer_4="Creature"
+2d_physics/layer_5="FRIEND_BUFF"
+2d_physics/layer_6="FOE_BUFF"
 
 [physics]
 

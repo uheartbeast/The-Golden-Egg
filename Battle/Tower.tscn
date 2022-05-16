@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Unit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Base.png" type="Texture" id=2]
 [ext_resource path="res://Battle/Tower.gd" type="Script" id=3]
+[ext_resource path="res://Battle/SpeedBuff.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0313726, 0.980392, 1, 1 )
@@ -11,10 +12,10 @@ bg_color = Color( 0.0313726, 0.980392, 1, 1 )
 bg_color = Color( 1, 0.243137, 0, 1 )
 
 [node name="Tower" instance=ExtResource( 1 )]
+z_index = -10
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
 texture = ExtResource( 2 )
 
 [node name="ProgressBar" type="ProgressBar" parent="." index="2"]
@@ -27,3 +28,5 @@ custom_styles/bg = SubResource( 2 )
 max_value = 1000.0
 value = 500.0
 percent_visible = false
+
+[node name="SpeedBuff" parent="." index="3" instance=ExtResource( 4 )]
