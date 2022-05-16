@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Creatures/CreatureStats.gd" type="Script" id=1]
+[ext_resource path="res://Creatures/Wolf.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+max_health = 200
+speed = 15.0
+attack = 20
+attacks_per_second = 3
+attack_range = 1
+sprite = ExtResource( 2 )
