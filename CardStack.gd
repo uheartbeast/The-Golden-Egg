@@ -5,6 +5,9 @@ export(Resource) var deck
 onready var timer: = $Timer
 onready var label: = $Label
 
+func _ready():
+	deck.shuffle()
+
 func _physics_process(delta):
 	if timer.time_left > 0:
 		label.text = str(round(timer.time_left))

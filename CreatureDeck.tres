@@ -6,4 +6,4 @@
 
 [resource]
 script = ExtResource( 1 )
-cards = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ]
+cards = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ) ]

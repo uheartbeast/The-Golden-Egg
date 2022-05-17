@@ -32,4 +32,4 @@ func _on_Base_input_event(viewport, event, shape_idx):
 			ReferenceStash.selectedCard = null
 
 func _on_Base2_tree_exited():
-	get_tree().change_scene("res://Screens/VictoryScreen.tscn")
+	if get_tree(): get_tree().change_scene("res://Screens/VictoryScreen.tscn")
