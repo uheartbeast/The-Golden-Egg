@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Battle/Rock.png" type="Texture" id=1]
+[ext_resource path="res://Creatures/GoldenDragonStats.tres" type="Resource" id=2]
 [ext_resource path="res://CardStack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Creatures/Creature.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Creatures/WolfStats.tres" type="Resource" id=5]
@@ -50,7 +51,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 512, 128 )
+position = Vector2( 232, 184 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 448, 128 )
@@ -76,28 +77,8 @@ stats = ExtResource( 5 )
 position = Vector2( 344, 176 )
 stats = ExtResource( 5 )
 
-[node name="Creature4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 376, 192 )
-stats = ExtResource( 5 )
-
-[node name="Creature5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 360, 200 )
-stats = ExtResource( 5 )
-
-[node name="Creature6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 344, 192 )
-stats = ExtResource( 5 )
-
 [node name="Creature7" parent="." instance=ExtResource( 4 )]
 position = Vector2( 328, 176 )
-stats = ExtResource( 5 )
-
-[node name="Creature8" parent="." instance=ExtResource( 4 )]
-position = Vector2( 320, 200 )
-stats = ExtResource( 5 )
-
-[node name="Creature9" parent="." instance=ExtResource( 4 )]
-position = Vector2( 344, 208 )
 stats = ExtResource( 5 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
@@ -109,4 +90,9 @@ polygon = PoolVector2Array( -32, -72, 712, -48, 656, 192, 616, 192, 624, 152, 60
 color = Color( 0.164706, 0.164706, 0.164706, 1 )
 script = SubResource( 2 )
 
+[node name="Creature10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 96, 184 )
+stats = ExtResource( 2 )
+
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
+[connection signal="tree_exited" from="Creature10" to="." method="_on_Creature10_tree_exited"]

@@ -19,6 +19,7 @@ stats = ExtResource( 3 )
 texture = ExtResource( 5 )
 
 [node name="TargetFinder" type="Area2D" parent="." index="2"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
