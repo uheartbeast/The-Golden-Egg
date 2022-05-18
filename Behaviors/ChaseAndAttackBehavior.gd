@@ -1,6 +1,12 @@
 extends Behavior
 class_name ChaseAndAttackBehavior
 
+var timer
+
+func _ready():
+	timer = Timer.new()
+	add_child(timer)
+
 func execute():
 	if not creature is Creature: return
 	var target = prioritize_target()
@@ -17,8 +23,8 @@ func execute():
 		creature.linear_velocity = creature.linear_velocity.move_toward(Vector2.ZERO, 20)
 		creature.set_physics_process(false)
 		target.stats.health -= creature.stats.attack
-		creature.attackTimer.start(1.0 / float(creature.stats.attacks_per_second))
-		yield(creature.attackTimer, "timeout")
+		timer.start(1.0 / float(creature.stats.attacks_per_second))
+		yield(timer, "timeout")
 		creature.set_physics_process(true)
 
 func prioritize_target():

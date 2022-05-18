@@ -4,7 +4,7 @@
 [ext_resource path="res://Spells/FireBlast.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 24.0
+radius = 32.0
 
 [node name="FireBlast" type="Area2D"]
 collision_layer = 0
@@ -16,7 +16,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 0.523598
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]

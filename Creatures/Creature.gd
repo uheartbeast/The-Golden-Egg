@@ -46,6 +46,7 @@ func change_behavior(NewBehaviorScript):
 	behavior = NewBehaviorScript.new()
 	add_child(behavior)
 	behavior.creature = self
+	set_physics_process(true)
 
 func update_health_bar(health, health_change):
 	healthBar.max_value = stats.max_health

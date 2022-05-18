@@ -4,7 +4,7 @@
 [ext_resource path="res://Spells/IceBlast.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 16.0
+radius = 24.0
 
 [node name="IceBlast" type="Area2D"]
 collision_layer = 0
@@ -12,6 +12,8 @@ collision_mask = 8
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+rotation = -0.523598
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
