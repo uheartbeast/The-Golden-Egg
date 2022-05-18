@@ -1,35 +1,29 @@
 extends YSort
 
-const Rat = preload("res://Creatures/Creature.tscn")
+const Creature = preload("res://Creatures/Creature.tscn")
+const Blast = preload("res://Spells/Blast.tscn")
 
-onready var playerBase: = $Base
-onready var enemyBase: = $Base2
-onready var baseOutline: = $Base/BaseOutline
-
-func _physics_process(delta):
-	baseOutline.visible = (ReferenceStash.selectedCard is Card)
+func _ready():
+	for i in 20:
+		create_creature(Creature, Unit.ALLIANCE.FOE, preload("res://Creatures/RatStats.tres"))
 
 func create_creature(Creature, alliance, stats):
-	var base = playerBase
-	if alliance == Unit.ALLIANCE.FOE: base = enemyBase
-	if not base: return null
 	var creature = Creature.instance()
 	creature.alliance = alliance
 	creature.stats = stats.duplicate()
 	add_child(creature)
-	creature.global_position = base.global_position + Vector2(rand_range(-2, 2), rand_range(-2, 2))
+	creature.global_position = $Position2D.global_position + Vector2(rand_range(-16, 16), rand_range(-16, 16))
 	return creature
 
 func _on_EnemyTimer_timeout():
-	create_creature(Rat, Unit.ALLIANCE.FOE, load("res://Creatures/RatStats.tres"))
+	pass
+#	create_creature(Rat, Unit.ALLIANCE.FOE, load("res://Creatures/RatStats.tres"))
 
-func _on_Base_input_event(viewport, event, shape_idx):
+func _input(event):
 	if event.is_action_pressed("mouse_left"):
-		var card = ReferenceStash.selectedCard
-		if card is Card:
-			var unit = create_creature(Rat, Unit.ALLIANCE.FRIEND, card.creatureStats.duplicate())
-			card.queue_free()
-			ReferenceStash.selectedCard = null
-
-func _on_Base2_tree_exited():
-	if get_tree(): get_tree().change_scene("res://Screens/VictoryScreen.tscn")
+		var blast = Blast.instance()
+		
+		blast.position = event.position
+		add_child(blast)
+		print("hi")
+	
