@@ -3,12 +3,15 @@ class_name TargetStash
 
 var targets = []
 
+signal empty
+
 func add_target(target):
 	if target in targets: return
 	targets.append(target)
 
 func remove_target(target):
 	targets.erase(target)
+	if targets.empty(): emit_signal("empty")
 
 func get_nearestTarget(position: Vector2) -> Node2D:
 	if targets.empty(): return null

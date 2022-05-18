@@ -1,24 +1,20 @@
-extends Unit
+extends RigidBody2D
 class_name Creature
 
+enum ALLIANCE {
+	FRIEND,
+	FOE,
+}
+
 var targets = []
+
+export(ALLIANCE) var alliance = ALLIANCE.FRIEND
+export(Resource) var stats setget set_stats
 
 onready var sprite: = $Sprite
 onready var targetFinder: = $TargetFinder
 onready var attackTimer: = $AttackTimer
 onready var healthBar: = $HealthBar
-
-func set_alliance(value):
-	alliance = value
-	match alliance:
-		ALLIANCE.FRIEND:
-			ReferenceStash.enemyTargetsStash.remove_target(self)
-			ReferenceStash.playerTargetsStash.add_target(self)
-			update_direction_facing(1)
-		ALLIANCE.FOE:
-			ReferenceStash.playerTargetsStash.remove_target(self)
-			ReferenceStash.enemyTargetsStash.add_target(self)
-			update_direction_facing(-1)
 
 func set_stats(value):
 	stats = value
@@ -29,11 +25,11 @@ func set_stats(value):
 func update_direction_facing(direction):
 	var sprite = find_node("Sprite")
 	if sprite is Sprite: sprite.scale.x = direction
-	var defaultTarget = find_node("DefaultTarget")
-	if defaultTarget is Position2D: defaultTarget.position.x = direction * 32
 
 func _ready():
-	linear_damp = 0.001
+	match alliance:
+		ALLIANCE.FRIEND: ReferenceStash.playerTargetsStash.add_target(self)
+		ALLIANCE.FOE: ReferenceStash.enemyTargetsStash.add_target(self)
 	self.stats = stats.duplicate()
 	if stats is Stats:
 		stats.connect("no_health", self, "queue_free")
@@ -48,14 +44,12 @@ func _physics_process(delta):
 	var target_distance = target_direction.length()
 	if target_distance > stats.attack_range * 24 or target is Position2D:
 		var velocity = Vector2.ZERO.move_toward(target_direction, stats.speed)
+		if velocity.x != 0: update_direction_facing(sign(velocity.x))
 		linear_velocity = linear_velocity.move_toward(velocity, stats.speed)
 	else:
 		linear_velocity = linear_velocity.move_toward(Vector2.ZERO, 20)
 		set_physics_process(false)
-		if target is Tower:
-			target.alliance_meter -= stats.attack * (alliance-1)
-		else:
-			target.stats.health -= stats.attack
+		target.stats.health -= stats.attack
 		attackTimer.start(1.0 / float(stats.attacks_per_second))
 		yield(attackTimer, "timeout")
 		set_physics_process(true)

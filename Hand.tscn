@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 margin_left = -24.0
 margin_top = -40.0
 margin_right = 24.0
+grow_horizontal = 2
 custom_constants/separation = 16
 alignment = 1
 script = ExtResource( 1 )

@@ -1,0 +1,2 @@
+extends Creature
+class_name PlayerCreature

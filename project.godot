@@ -9,22 +9,22 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Tower",
-"class": "Base",
-"language": "GDScript",
-"path": "res://Battle/Base.gd"
-}, {
 "base": "Control",
 "class": "Card",
 "language": "GDScript",
 "path": "res://Cards/Card.gd"
+}, {
+"base": "TextureRect",
+"class": "CardStack",
+"language": "GDScript",
+"path": "res://CardStack.gd"
 }, {
 "base": "Node",
 "class": "Command",
 "language": "GDScript",
 "path": "res://Commands/Command.gd"
 }, {
-"base": "Unit",
+"base": "RigidBody2D",
 "class": "Creature",
 "language": "GDScript",
 "path": "res://Creatures/Creature.gd"
@@ -39,6 +39,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Deck.gd"
 }, {
+"base": "HBoxContainer",
+"class": "Hand",
+"language": "GDScript",
+"path": "res://Hand.gd"
+}, {
+"base": "Creature",
+"class": "PlayerCreature",
+"language": "GDScript",
+"path": "res://Creatures/PlayerCreature.gd"
+}, {
 "base": "Resource",
 "class": "Stats",
 "language": "GDScript",
@@ -49,26 +59,22 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://TargetStash.gd"
 }, {
-"base": "Unit",
-"class": "Tower",
-"language": "GDScript",
-"path": "res://Battle/Tower.gd"
-}, {
 "base": "RigidBody2D",
 "class": "Unit",
 "language": "GDScript",
 "path": "res://Unit.gd"
 } ]
 _global_script_class_icons={
-"Base": "",
 "Card": "",
+"CardStack": "",
 "Command": "",
 "Creature": "",
 "CreatureStats": "",
 "Deck": "",
+"Hand": "",
+"PlayerCreature": "",
 "Stats": "",
 "TargetStash": "",
-"Tower": "",
 "Unit": ""
 }
 
@@ -142,5 +148,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"

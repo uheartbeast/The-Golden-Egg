@@ -1,15 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Battle/Rock.png" type="Texture" id=1]
+[ext_resource path="res://Battle/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Creatures/GoldenDragonStats.tres" type="Resource" id=2]
 [ext_resource path="res://CardStack.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Creatures/Creature.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Creatures/WolfStats.tres" type="Resource" id=5]
+[ext_resource path="res://Creatures/PlayerCreature.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Battle.gd" type="Script" id=6]
 [ext_resource path="res://Hand.tscn" type="PackedScene" id=7]
-[ext_resource path="res://CreatureDeck.tres" type="Resource" id=8]
-
-[sub_resource type="CircleShape2D" id=1]
+[ext_resource path="res://StartingDeck.tres" type="Resource" id=8]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Polygon2D
@@ -35,51 +32,34 @@ margin_left = -112.0
 margin_top = -88.0
 margin_right = 112.0
 margin_bottom = 8.0
-grow_horizontal = 2
 mouse_filter = 2
 
 [node name="CardStack" parent="Cards" instance=ExtResource( 3 )]
-visible = false
 margin_left = 568.0
 margin_top = 256.0
 margin_right = 632.0
 margin_bottom = 352.0
 deck = ExtResource( 8 )
 
-[node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 232, 184 )
+position = Vector2( 512, 192 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 448, 128 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Rock" parent="." instance=ExtResource( 1 )]
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
-texture = ExtResource( 1 )
+[node name="Rock2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 128 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 1 )
+[node name="Rock3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 216, 216 )
 
-[node name="Creature" parent="." instance=ExtResource( 4 )]
-position = Vector2( 344, 160 )
-stats = ExtResource( 5 )
+[node name="Rock4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 520, 264 )
 
-[node name="Creature2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 368, 168 )
-stats = ExtResource( 5 )
+[node name="Rock5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 280 )
 
-[node name="Creature3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 344, 176 )
-stats = ExtResource( 5 )
-
-[node name="Creature7" parent="." instance=ExtResource( 4 )]
-position = Vector2( 328, 176 )
-stats = ExtResource( 5 )
+[node name="Rock6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 320 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
@@ -90,9 +70,7 @@ polygon = PoolVector2Array( -32, -72, 712, -48, 656, 192, 616, 192, 624, 152, 60
 color = Color( 0.164706, 0.164706, 0.164706, 1 )
 script = SubResource( 2 )
 
-[node name="Creature10" parent="." instance=ExtResource( 4 )]
-position = Vector2( 96, 184 )
+[node name="PlayerCreature" parent="." instance=ExtResource( 4 )]
+position = Vector2( 80, 176 )
+mass = 1000.0
 stats = ExtResource( 2 )
-
-[connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
-[connection signal="tree_exited" from="Creature10" to="." method="_on_Creature10_tree_exited"]

@@ -1,19 +1,11 @@
-tool
 extends Control
 class_name Card
 
-export(Resource) var creatureStats setget set_createrStats
+export(PackedScene) var spell
 
 var hover = false setget set_hover
 
 onready var cardImage: = $CardImage
-onready var icon: = $CardImage/CenterContainer/Icon
-
-func set_createrStats(value):
-	creatureStats = value
-	if creatureStats is CreatureStats:
-		var icon = find_node("Icon")
-		if icon: icon.texture = creatureStats.sprite
 
 func set_hover(value):
 	hover = value

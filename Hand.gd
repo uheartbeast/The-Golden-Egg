@@ -1,4 +1,5 @@
 extends HBoxContainer
+class_name Hand
 
 const Card = preload("res://Cards/Card.tscn")
 
@@ -14,5 +15,4 @@ func remove_child(node) -> void:
 
 func add_card(creatureStats):
 	var card = Card.instance()
-	card.creatureStats = creatureStats.duplicate()
 	add_child(card)
