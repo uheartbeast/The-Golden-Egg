@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Behaviors/ChaseAndAttackBehavior.gd" type="Script" id=1]
 [ext_resource path="res://Creatures/Creature.gd" type="Script" id=2]
-[ext_resource path="res://Creatures/RatStats.tres" type="Resource" id=3]
 [ext_resource path="res://HealthBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Creatures/Rat.png" type="Texture" id=5]
 
@@ -23,7 +23,6 @@ mass = 2.0
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
 script = ExtResource( 2 )
-stats = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 5 )
@@ -46,6 +45,9 @@ margin_left = -8.0
 margin_top = -8.0
 margin_right = 8.0
 margin_bottom = -7.0
+
+[node name="ChaseAndAttackBehavior" type="Node" parent="."]
+script = ExtResource( 1 )
 
 [connection signal="tree_exiting" from="." to="." method="_on_Creature_tree_exiting"]
 [connection signal="area_entered" from="TargetFinder" to="." method="_on_TargetFinder_area_entered"]

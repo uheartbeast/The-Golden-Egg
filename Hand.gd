@@ -13,6 +13,6 @@ func remove_child(node) -> void:
 	if get_child_count() == 0:
 		emit_signal("empty")
 
-func add_card(creatureStats):
-	var card = Card.instance()
+func add_card(CardScene):
+	var card = CardScene.instance()
 	add_child(card)

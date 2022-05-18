@@ -28,10 +28,15 @@ func draw_cards(amount: int):
 	for i in amount:
 		var CardScene = cardStack.draw_card()
 		if not CardScene is PackedScene:
-			discardPile.shuffle()
-			cardStack.deck.cards = discardPile.cards.duplicate()
-			discardPile.clear()
+			shuffle_discard_pile_into_deck()
+			CardScene = cardStack.draw_card()
 		hand.add_card(CardScene)
+
+func shuffle_discard_pile_into_deck():
+	discardPile.shuffle()
+	cardStack.deck.cards = discardPile.cards.duplicate()
+	discardPile.clear()
+	print(cardStack.deck.cards)
 
 func create_creature(CreatureScene, stats):
 	var creature = CreatureScene.instance()
@@ -45,6 +50,9 @@ func _on_enemyTargetsStash_empty():
 
 func _input(event):
 	if event.is_action_pressed("mouse_right"):
+		var card = ReferenceStash.selectedCard
+		if not card is Card: return
+		card.set_hover(false)
 		ReferenceStash.selectedCard = null
 	
 	if event.is_action_pressed("mouse_left"):
@@ -54,8 +62,9 @@ func _input(event):
 		var spell = card.spell.instance()
 		spell.position = event.position
 		add_child(spell)
+		discardPile.add_card(load(card.filename))
 		hand.remove_child(card)
-		discardPile.add_card(card)
+		print(discardPile.cards)
 		ReferenceStash.selectedCard = null
 
 func end_game():

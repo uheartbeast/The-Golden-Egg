@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Battle/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Creatures/GoldenDragonStats.tres" type="Resource" id=2]
@@ -21,6 +21,10 @@ script/source = "extends Polygon2D
 func _ready():
 	polygon = get_parent().polygon
 "
+
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.0
+bounce = 0.1
 
 [node name="Battle" type="YSort"]
 script = ExtResource( 6 )
@@ -73,4 +77,5 @@ script = SubResource( 2 )
 [node name="PlayerCreature" parent="." instance=ExtResource( 4 )]
 position = Vector2( 80, 176 )
 mass = 1000.0
+physics_material_override = SubResource( 3 )
 stats = ExtResource( 2 )

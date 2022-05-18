@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Behavior",
+"language": "GDScript",
+"path": "res://Behaviors/Behavior.gd"
+}, {
 "base": "Control",
 "class": "Card",
 "language": "GDScript",
@@ -18,6 +23,11 @@ _global_script_classes=[ {
 "class": "CardStack",
 "language": "GDScript",
 "path": "res://CardStack.gd"
+}, {
+"base": "Behavior",
+"class": "ChaseAndAttackBehavior",
+"language": "GDScript",
+"path": "res://Behaviors/ChaseAndAttackBehavior.gd"
 }, {
 "base": "Node",
 "class": "Command",
@@ -38,6 +48,11 @@ _global_script_classes=[ {
 "class": "Deck",
 "language": "GDScript",
 "path": "res://Deck.gd"
+}, {
+"base": "Behavior",
+"class": "FrozenBehavior",
+"language": "GDScript",
+"path": "res://Behaviors/FrozenBehavior.gd"
 }, {
 "base": "HBoxContainer",
 "class": "Hand",
@@ -65,12 +80,15 @@ _global_script_classes=[ {
 "path": "res://Unit.gd"
 } ]
 _global_script_class_icons={
+"Behavior": "",
 "Card": "",
 "CardStack": "",
+"ChaseAndAttackBehavior": "",
 "Command": "",
 "Creature": "",
 "CreatureStats": "",
 "Deck": "",
+"FrozenBehavior": "",
 "Hand": "",
 "PlayerCreature": "",
 "Stats": "",
@@ -130,7 +148,8 @@ mouse_left={
 }
 mouse_right={
 "deadzone": 0.5,
-"events": [  ]
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
 }
 
 [layer_names]
