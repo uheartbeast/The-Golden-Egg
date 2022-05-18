@@ -11,10 +11,10 @@ var discardPile = ReferenceStash.discardPile
 
 onready var hand: Hand = find_node("Hand")
 onready var cardStack: CardStack = find_node("CardStack")
+onready var startRoundButton: Button = find_node("StartRoundButton")
 
 func _ready():
 	ReferenceStash.enemyTargetsStash.connect("empty", self, "_on_enemyTargetsStash_empty")
-	call_deferred("start_round")
 
 func start_round():
 	for i in 20:
@@ -36,7 +36,6 @@ func shuffle_discard_pile_into_deck():
 	discardPile.shuffle()
 	cardStack.deck.cards = discardPile.cards.duplicate()
 	discardPile.clear()
-	print(cardStack.deck.cards)
 
 func create_creature(CreatureScene, stats):
 	var creature = CreatureScene.instance()
@@ -46,7 +45,7 @@ func create_creature(CreatureScene, stats):
 	return creature
 
 func _on_enemyTargetsStash_empty():
-	call_deferred("start_round")
+	startRoundButton.show()
 
 func _input(event):
 	if event.is_action_pressed("mouse_right"):
@@ -64,7 +63,6 @@ func _input(event):
 		add_child(spell)
 		discardPile.add_card(load(card.filename))
 		hand.remove_child(card)
-		print(discardPile.cards)
 		ReferenceStash.selectedCard = null
 
 func end_game():
@@ -72,4 +70,7 @@ func end_game():
 
 func _on_Creature10_tree_exited():
 	call_deferred("end_game")
-	
+
+func _on_StartRoundButton_pressed():
+	startRoundButton.hide()
+	call_deferred("start_round")

@@ -45,6 +45,15 @@ margin_right = 632.0
 margin_bottom = 352.0
 deck = ExtResource( 8 )
 
+[node name="StartRoundButton" type="Button" parent="Cards"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -112.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 32.0
+text = "Start Round"
+
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 512, 192 )
 
@@ -79,3 +88,5 @@ position = Vector2( 80, 176 )
 mass = 1000.0
 physics_material_override = SubResource( 3 )
 stats = ExtResource( 2 )
+
+[connection signal="pressed" from="Cards/StartRoundButton" to="." method="_on_StartRoundButton_pressed"]
