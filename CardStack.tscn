@@ -23,4 +23,3 @@ align = 1
 valign = 1
 
 [connection signal="gui_input" from="." to="." method="_on_CardStack_gui_input"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

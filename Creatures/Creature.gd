@@ -48,9 +48,9 @@ func _physics_process(delta):
 	var target_distance = target_direction.length()
 	if target_distance > stats.attack_range * 24 or target is Position2D:
 		var velocity = Vector2.ZERO.move_toward(target_direction, stats.speed)
-#		linear_velocity = velocity
+		linear_velocity = linear_velocity.move_toward(velocity, stats.speed)
 	else:
-		linear_velocity = Vector2.ZERO
+		linear_velocity = linear_velocity.move_toward(Vector2.ZERO, 20)
 		set_physics_process(false)
 		if target is Tower:
 			target.alliance_meter -= stats.attack * (alliance-1)

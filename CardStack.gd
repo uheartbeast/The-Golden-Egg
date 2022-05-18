@@ -26,8 +26,6 @@ func draw_card() -> PackedScene:
 func _on_CardStack_gui_input(event):
 	if timer.time_left > 0: return
 	if event.is_action_pressed("mouse_left"):
-		ReferenceStash.hand.add_card(draw_card())
-		timer.start()
-
-func _on_Timer_timeout():
-	pass # Replace with function body.
+		pass
+#		ReferenceStash.hand.add_card(draw_card())
+#		timer.start()
