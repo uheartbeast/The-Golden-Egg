@@ -27,6 +27,7 @@ func play(target_position):
 	spell.position = target_position
 	get_tree().current_scene.add_child(spell)
 	ReferenceStash.selectedCard = null
+	return spell
 
 func _on_Card_mouse_entered():
 	cardImage.rect_position.y = -16

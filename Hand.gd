@@ -14,5 +14,6 @@ func remove_child(node) -> void:
 		emit_signal("empty")
 
 func add_card(CardScene):
+	if not CardScene is PackedScene: return
 	var card = CardScene.instance()
 	add_child(card)

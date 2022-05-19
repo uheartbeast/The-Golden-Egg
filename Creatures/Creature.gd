@@ -1,6 +1,8 @@
 extends RigidBody2D
 class_name Creature
 
+const Projectile = preload("res://Projectile.tscn")
+
 enum ALLIANCE {
 	FRIEND,
 	FOE,
@@ -47,6 +49,16 @@ func change_behavior(NewBehaviorScript):
 	add_child(behavior)
 	behavior.creature = self
 	set_physics_process(true)
+
+func attack(target):
+	if stats.attack_range == 1:
+		target.stats.health -= stats.attack
+	elif stats.attack_range > 1:
+		var projectile = Projectile.instance()
+		projectile.damage = stats.attack
+		projectile.target = target
+		get_tree().current_scene.add_child(projectile)
+		projectile.global_position = global_position
 
 func update_health_bar(health, health_change):
 	healthBar.max_value = stats.max_health

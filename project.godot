@@ -69,15 +69,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://PlayerStats.gd"
 }, {
-"base": "Node",
-"class": "Spell",
-"language": "GDScript",
-"path": "res://Spells/Spell.gd"
-}, {
 "base": "Resource",
 "class": "Stats",
 "language": "GDScript",
 "path": "res://Stats.gd"
+}, {
+"base": "Node2D",
+"class": "SummonSpell",
+"language": "GDScript",
+"path": "res://Spells/SummonSpell.gd"
 }, {
 "base": "Resource",
 "class": "TargetStash",
@@ -102,8 +102,8 @@ _global_script_class_icons={
 "Hand": "",
 "PlayerCreature": "",
 "PlayerStats": "",
-"Spell": "",
 "Stats": "",
+"SummonSpell": "",
 "TargetStash": "",
 "Unit": ""
 }
@@ -170,8 +170,7 @@ mouse_right={
 2d_physics/layer_2="Hurtbox"
 2d_physics/layer_3="Hitbox"
 2d_physics/layer_4="Creature"
-2d_physics/layer_5="FRIEND_BUFF"
-2d_physics/layer_6="FOE_BUFF"
+2d_physics/layer_5="FlyingCreature"
 
 [physics]
 

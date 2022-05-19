@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Cards/SummonCard.gd" type="Script" id=1]
 [ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spells/SummonSpell.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Creatures/PlayerCreature.tscn" type="PackedScene" id=4]
 
 [node name="SummonCard" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+SpellScene = ExtResource( 3 )
+CreatureScene = ExtResource( 4 )

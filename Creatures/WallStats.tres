@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Creatures/CreatureStats.gd" type="Script" id=1]
-[ext_resource path="res://Creatures/Wolf.png" type="Texture" id=2]
+[ext_resource path="res://Creatures/Wall.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-max_health = 200
-speed = 25.0
-attack = 20
+max_health = 800
+speed = 0.0
+attack = 0
 attacks_per_second = 1
-attack_range = 3
+attack_range = 1
 flying = false
 sprite = ExtResource( 2 )

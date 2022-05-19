@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Creatures/Wolf.png" type="Texture" id=1]
-[ext_resource path="res://Creatures/WolfStats.tres" type="Resource" id=2]
+[ext_resource path="res://Creatures/Rat.png" type="Texture" id=1]
+[ext_resource path="res://Creatures/RatStats.tres" type="Resource" id=2]
 [ext_resource path="res://Cards/SummonCard.tscn" type="PackedScene" id=3]
 
-[node name="FourWolvesCard" instance=ExtResource( 3 )]
+[node name="EightRatsCard" instance=ExtResource( 3 )]
 creatureStats = ExtResource( 2 )
-amount = 4
+amount = 8
 
 [node name="Label" parent="CardImage/VBoxContainer" index="0"]
-text = "4 Wolves"
+text = "8 Rats"
 
 [node name="Icon" parent="CardImage/VBoxContainer/CenterContainer" index="0"]
-margin_left = 20.0
-margin_top = 26.0
-margin_right = 44.0
-margin_bottom = 50.0
+margin_left = 24.0
+margin_top = 30.0
+margin_right = 40.0
+margin_bottom = 46.0
 texture = ExtResource( 1 )
