@@ -45,6 +45,7 @@ margin_left = -8.0
 margin_top = -8.0
 margin_right = 8.0
 margin_bottom = -7.0
+mouse_filter = 2
 
 [node name="ChaseAndAttackBehavior" type="Node" parent="."]
 script = ExtResource( 1 )

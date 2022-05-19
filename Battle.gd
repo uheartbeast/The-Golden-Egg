@@ -77,13 +77,10 @@ func _unhandled_input(event):
 	if event.is_action_pressed("mouse_left"):
 		var card = ReferenceStash.selectedCard
 		if not card is Card: return
-		if not card.spell is PackedScene: return
-		var spell = card.spell.instance()
-		spell.position = event.position
-		add_child(spell)
-		discardPile.add_card(load(card.filename))
+		if not card.SpellScene is PackedScene: return
+		card.play(event.position)
 		hand.remove_child(card)
-		ReferenceStash.selectedCard = null
+		discardPile.add_card(load(card.filename))
 
 func discard_hand():
 	ReferenceStash.selectedCard = null

@@ -28,7 +28,7 @@ func _physics_process(delta):
 func _on_BuyButton_pressed():
 	var selectedCard = ReferenceStash.selectedCard
 	if not selectedCard is Card: return
-	if playerStats.coins <= selectedCard.cost:
+	if playerStats.coins >= selectedCard.cost:
 		emit_signal("card_purchased", load(selectedCard.filename))
 		playerStats.coins -= selectedCard.cost
 	selectedCard.set_hover(false)

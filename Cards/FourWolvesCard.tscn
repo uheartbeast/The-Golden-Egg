@@ -6,14 +6,14 @@
 
 [node name="FourWolvesCard" instance=ExtResource( 2 )]
 cost = 3
-spell = ExtResource( 3 )
+SpellScene = ExtResource( 3 )
 
 [node name="Label" parent="CardImage/VBoxContainer" index="0"]
 text = "4 Wolves"
 
 [node name="Icon" parent="CardImage/VBoxContainer/CenterContainer" index="0"]
 margin_left = 20.0
-margin_top = 28.0
+margin_top = 26.0
 margin_right = 44.0
-margin_bottom = 52.0
+margin_bottom = 50.0
 texture = ExtResource( 1 )

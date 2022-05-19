@@ -106,6 +106,13 @@ mass = 1000.0
 physics_material_override = SubResource( 3 )
 stats = ExtResource( 2 )
 
+[node name="HealthBar" parent="PlayerCreature" index="4"]
+margin_top = -33.0
+margin_bottom = -32.0
+mouse_filter = 0
+
 [connection signal="pressed" from="UI/StartRoundButton" to="." method="_on_StartRoundButton_pressed"]
 [connection signal="card_purchased" from="UI/CardShop" to="." method="_on_CardShop_card_purchased"]
 [connection signal="skipped" from="UI/CardShop" to="." method="_on_CardShop_skipped"]
+
+[editable path="PlayerCreature"]

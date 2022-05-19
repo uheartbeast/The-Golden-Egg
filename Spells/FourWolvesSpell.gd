@@ -1,5 +1,7 @@
 extends Node2D
 
+var creatureStats
+
 func _ready():
 	for i in 4:
 		create_creature(load("res://Creatures/PlayerCreature.tscn"), load("res://Creatures/WolfStats.tres"))

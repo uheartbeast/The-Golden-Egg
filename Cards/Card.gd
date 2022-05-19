@@ -2,7 +2,7 @@ extends Control
 class_name Card
 
 export(int) var cost = 2
-export(PackedScene) var spell
+export(PackedScene) var SpellScene
 
 var hover = false setget set_hover
 
@@ -21,6 +21,12 @@ func _on_Card_gui_input(event):
 		ReferenceStash.selectedCard = self
 		self.hover = true
 		get_tree().set_input_as_handled()
+
+func play(target_position):
+	var spell = SpellScene.instance()
+	spell.position = target_position
+	get_tree().current_scene.add_child(spell)
+	ReferenceStash.selectedCard = null
 
 func _on_Card_mouse_entered():
 	cardImage.rect_position.y = -16

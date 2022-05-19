@@ -5,7 +5,7 @@
 [ext_resource path="res://Spells/IceBlast.png" type="Texture" id=3]
 
 [node name="IceBlastCard" instance=ExtResource( 1 )]
-spell = ExtResource( 2 )
+SpellScene = ExtResource( 2 )
 
 [node name="Label" parent="CardImage/VBoxContainer" index="0"]
 text = "Ice Blast"
