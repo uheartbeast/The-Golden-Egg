@@ -1,7 +1,7 @@
 extends Card
 
 export(Resource) var creatureStats
-export(int) var amount
+export(int) var amount = 1
 export(PackedScene) var CreatureScene = load("res://Creatures/PlayerCreature.tscn")
 
 func play(target_position):

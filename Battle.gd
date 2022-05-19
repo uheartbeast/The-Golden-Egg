@@ -22,7 +22,6 @@ func _ready():
 	playerStats.refresh_mana()
 
 func start_round():
-	playerStats.refresh_mana()
 	for i in 15:
 		EnemyStatsList.shuffle()
 		var EnemyStats = EnemyStatsList.front()
@@ -65,8 +64,11 @@ func collect_coins():
 
 func _on_enemyTargetsStash_empty():
 	discard_hand()
+	playerStats.refresh_mana()
 	collect_coins()
 	yield(get_tree().create_timer(0.5), "timeout")
+	cardShop.fill_shop()
+	yield(get_tree(), "idle_frame")
 	cardShop.show()
 
 func _unhandled_input(event):

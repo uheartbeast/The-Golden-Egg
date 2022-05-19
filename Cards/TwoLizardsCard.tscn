@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Creatures/LizardStats.tres" type="Resource" id=1]
+[ext_resource path="res://Creatures/Lizard.png" type="Texture" id=2]
+[ext_resource path="res://Cards/SummonCard.tscn" type="PackedScene" id=3]
+
+[node name="TwoLizardsCard" instance=ExtResource( 3 )]
+cost = 3
+mana_cost = 2
+creatureStats = ExtResource( 1 )
+amount = 2
+
+[node name="Label" parent="CardImage/VBoxContainer" index="0"]
+text = "2 Lizards"
+
+[node name="Icon" parent="CardImage/VBoxContainer/CenterContainer" index="0"]
+margin_left = 20.0
+margin_top = 23.0
+margin_right = 44.0
+margin_bottom = 47.0
+texture = ExtResource( 2 )

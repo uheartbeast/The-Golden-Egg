@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Creatures/CreatureStats.gd" type="Script" id=1]
-[ext_resource path="res://Creatures/Rat.png" type="Texture" id=2]
+[ext_resource path="res://Creatures/Lizard.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-max_health = 80
-speed = 30.0
-attack = 10
-attacks_per_second = 6
-attack_range = 1
+max_health = 100
+speed = 10.0
+attack = 80
+attacks_per_second = 1
+attack_range = 3
 size = 8
 sprite = ExtResource( 2 )

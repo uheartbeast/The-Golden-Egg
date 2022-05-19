@@ -25,6 +25,10 @@ func set_stats(value):
 	if not stats is CreatureStats: return
 	var sprite = find_node("Sprite")
 	if sprite: sprite.texture = stats.sprite
+	var collider = find_node("Collider")
+	if collider and stats.size > 8:
+		collider.shape = collider.shape.duplicate()
+		collider.shape.radius = stats.size
 
 func update_direction_facing(direction):
 	var sprite = find_node("Sprite")

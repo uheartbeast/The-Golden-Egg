@@ -3,6 +3,8 @@ extends CenterContainer
 var startingDeck = ReferenceStash.startingDeck as Deck
 var playerStats = ReferenceStash.playerStats as PlayerStats
 
+export(Array, PackedScene) var card_list
+
 onready var buyButton: = find_node("BuyButton")
 onready var cards: = find_node("Cards")
 onready var cardCosts: = find_node("CardCosts")
@@ -12,12 +14,19 @@ signal card_purchased(CardScene)
 signal skipped
 
 func _ready():
+	fill_shop()
+
+func fill_shop():
 	ReferenceStash.selectedCard = null
-	var cardCostContainers = cardCosts.get_children()
-	var cardNodes = cards.get_children()
-	for i in cards.get_child_count():
-		var card = cardNodes[i]
-		var cardCost = cardCostContainers[i].get_child(1)
+	for card in cards.get_children():
+		card.queue_free()
+	
+	card_list.shuffle()
+	var new_cards = []
+	for i in 3:
+		var card = card_list[i].instance()
+		cards.add_child(card)
+		var cardCost = cardCosts.get_child(i).get_child(1)
 		cardCost.text = str(card.cost)
 
 func _physics_process(delta):
