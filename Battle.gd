@@ -47,7 +47,7 @@ func create_creature(CreatureScene, stats):
 func _on_enemyTargetsStash_empty():
 	startRoundButton.show()
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("mouse_right"):
 		var card = ReferenceStash.selectedCard
 		if not card is Card: return

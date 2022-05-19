@@ -14,8 +14,12 @@ func set_hover(value):
 
 func _on_Card_gui_input(event):
 	if event.is_action_pressed("mouse_left"):
+		var previousSelection = ReferenceStash.selectedCard
+		if previousSelection is Control:
+			previousSelection.set_hover(false)
 		ReferenceStash.selectedCard = self
 		self.hover = true
+		get_tree().set_input_as_handled()
 
 func _on_Card_mouse_entered():
 	cardImage.rect_position.y = -16
