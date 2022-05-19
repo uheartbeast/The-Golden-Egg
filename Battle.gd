@@ -7,14 +7,16 @@ var EnemyStatsList = [
 	preload("res://Creatures/RatStats.tres"),
 ]
 
-var discardPile = ReferenceStash.discardPile
+var discardPile = ReferenceStash.discardPile as Deck
 var playerStats = ReferenceStash.playerStats as PlayerStats
 
 onready var hand: Hand = find_node("Hand")
 onready var cardStack: CardStack = find_node("CardStack")
 onready var startRoundButton: Button = find_node("StartRoundButton")
+onready var cardShop: Control = find_node("CardShop")
 
 func _ready():
+	randomize()
 	ReferenceStash.playerStats.connect("coins_dropped", self, "drop_coins")
 	ReferenceStash.enemyTargetsStash.connect("empty", self, "_on_enemyTargetsStash_empty")
 
@@ -60,8 +62,10 @@ func collect_coins():
 		playerStats.coins += 1
 
 func _on_enemyTargetsStash_empty():
+	discard_hand()
 	collect_coins()
-	startRoundButton.show()
+	yield(get_tree().create_timer(0.5), "timeout")
+	cardShop.show()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("mouse_right"):
@@ -81,6 +85,12 @@ func _unhandled_input(event):
 		hand.remove_child(card)
 		ReferenceStash.selectedCard = null
 
+func discard_hand():
+	ReferenceStash.selectedCard = null
+	for card in hand.get_children():
+		discardPile.add_card(load(card.filename))
+		hand.remove_child(card)
+
 func end_game():
 	get_tree().change_scene("res://Screens/DefeatScreen.tscn")
 
@@ -90,3 +100,9 @@ func _on_Creature10_tree_exited():
 func _on_StartRoundButton_pressed():
 	startRoundButton.hide()
 	call_deferred("start_round")
+
+func _on_CardShop_card_purchased(CardScene):
+	cardStack.deck.add_card(CardScene)
+	cardStack.deck.shuffle()
+	cardShop.hide()
+	startRoundButton.show()

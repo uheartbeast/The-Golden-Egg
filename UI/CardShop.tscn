@@ -1,39 +1,165 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Cards/FireBlastCard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cards/LightningChainCard.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Cards/FourWolvesCard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PixelRPG.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Coin.png" type="Texture" id=5]
+[ext_resource path="res://UI/CardShop.gd" type="Script" id=6]
 
 [node name="CardShop" type="CenterContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 6 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 216.0
-margin_top = 123.0
-margin_right = 424.0
-margin_bottom = 237.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 80.0
+margin_top = 60.0
+margin_right = 560.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 480, 240 )
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 208.0
-margin_bottom = 14.0
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 473.0
+margin_bottom = 233.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 18.0
-margin_right = 208.0
-margin_bottom = 114.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+margin_left = 129.0
+margin_top = 14.0
+margin_right = 337.0
+margin_bottom = 212.0
 custom_constants/separation = 8
 
-[node name="FourWolvesCard" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
+margin_right = 208.0
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 4 )
+text = "Buy a new card?"
+align = 1
+valign = 1
+
+[node name="CardCosts" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 14.0
+margin_right = 208.0
+margin_bottom = 26.0
+
+[node name="Cost" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/CardCosts"]
+margin_right = 66.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/CardCosts/Cost"]
+margin_left = 22.0
+margin_right = 34.0
+margin_bottom = 12.0
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/CardCosts/Cost"]
+margin_left = 38.0
+margin_top = 3.0
+margin_right = 43.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 4 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="Cost2" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/CardCosts"]
+margin_left = 70.0
+margin_right = 137.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/CardCosts/Cost2"]
+margin_left = 23.0
+margin_right = 35.0
+margin_bottom = 12.0
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/CardCosts/Cost2"]
+margin_left = 39.0
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 4 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="Cost3" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/CardCosts"]
+margin_left = 141.0
+margin_right = 208.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/CardCosts/Cost3"]
+margin_left = 23.0
+margin_right = 35.0
+margin_bottom = 12.0
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/CardCosts/Cost3"]
+margin_left = 39.0
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 4 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="Space" type="Control" parent="PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 208.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="Cards" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 208.0
+margin_bottom = 146.0
+custom_constants/separation = 8
+
+[node name="FourWolvesCard" parent="PanelContainer/CenterContainer/VBoxContainer/Cards" instance=ExtResource( 3 )]
 margin_right = 64.0
 margin_bottom = 96.0
 
-[node name="LightningChainCard" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 2 )]
+[node name="LightningChainCard" parent="PanelContainer/CenterContainer/VBoxContainer/Cards" instance=ExtResource( 2 )]
 margin_left = 72.0
 margin_right = 136.0
 margin_bottom = 96.0
 
-[node name="FireBlastCard" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
+[node name="FireBlastCard" parent="PanelContainer/CenterContainer/VBoxContainer/Cards" instance=ExtResource( 1 )]
 margin_left = 144.0
 margin_right = 208.0
 margin_bottom = 96.0
+
+[node name="Space2" type="Control" parent="PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 208.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 178.0
+margin_right = 208.0
+margin_bottom = 198.0
+
+[node name="BuyButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 127.0
+margin_bottom = 20.0
+text = "Buy Selected Card"
+
+[node name="PassButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 170.0
+margin_right = 208.0
+margin_bottom = 20.0
+size_flags_horizontal = 10
+text = "Skip"
+
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/BuyButton" to="." method="_on_BuyButton_pressed"]

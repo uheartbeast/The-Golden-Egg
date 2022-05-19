@@ -7,6 +7,7 @@ var playerTargetsStash = load("res://PlayerTargetsStash.tres")
 var enemyTargetsStash = load("res://EnemyTargetsStash.tres")
 var discardPile = load("res://DiscardPile.tres")
 var playerStats = load("res://PlayerStats.tres")
+var startingDeck = load("res://StartingDeck.tres")
 
 static func get_nearest_node(position, node_list):
 	if node_list.empty(): return null
