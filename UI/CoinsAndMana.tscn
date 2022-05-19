@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://PixelRPG.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Coin.png" type="Texture" id=2]
+[ext_resource path="res://UI/CoinsAndMana.gd" type="Script" id=3]
+
+[node name="CoinsAndMana" type="VBoxContainer"]
+margin_right = 21.0
+margin_bottom = 12.0
+script = ExtResource( 3 )
+
+[node name="Coins" type="HBoxContainer" parent="."]
+margin_right = 21.0
+margin_bottom = 12.0
+
+[node name="TextureRect" type="TextureRect" parent="Coins"]
+margin_right = 12.0
+margin_bottom = 12.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Coins"]
+margin_left = 16.0
+margin_top = 3.0
+margin_right = 21.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"

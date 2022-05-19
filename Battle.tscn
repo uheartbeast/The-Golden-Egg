@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Battle/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Creatures/GoldenDragonStats.tres" type="Resource" id=2]
 [ext_resource path="res://CardStack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Creatures/PlayerCreature.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/CoinsAndMana.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Battle.gd" type="Script" id=6]
 [ext_resource path="res://Hand.tscn" type="PackedScene" id=7]
 [ext_resource path="res://StartingDeck.tres" type="Resource" id=8]
@@ -29,6 +30,23 @@ bounce = 0.1
 [node name="Battle" type="YSort"]
 script = ExtResource( 6 )
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="StartRoundButton" type="Button" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -112.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 32.0
+text = "Start Round"
+
+[node name="CoinsAndMana" parent="UI" instance=ExtResource( 5 )]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 29.0
+margin_bottom = 20.0
+
 [node name="Cards" type="Node" parent="."]
 
 [node name="Hand" parent="Cards" instance=ExtResource( 7 )]
@@ -44,15 +62,6 @@ margin_top = 256.0
 margin_right = 632.0
 margin_bottom = 352.0
 deck = ExtResource( 8 )
-
-[node name="StartRoundButton" type="Button" parent="Cards"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -112.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = 32.0
-text = "Start Round"
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 512, 192 )
@@ -75,6 +84,10 @@ position = Vector2( 480, 280 )
 position = Vector2( 512, 320 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 polygon = PoolVector2Array( -32, -72, 712, -48, 656, 192, 616, 192, 624, 152, 600, 136, 600, 72, 536, 88, 488, 56, 448, 16, 416, 40, 376, 24, 312, 56, 256, 40, 216, 104, 144, 104, 104, 128, 32, 120, 24, 144, 16, 208, 32, 248, 80, 224, 112, 240, 136, 272, 176, 248, 208, 240, 240, 264, 240, 304, 288, 312, 304, 344, 384, 320, 416, 360, 464, 352, 520, 344, 536, 352, 568, 248, 616, 192, 656, 192, 728, 408, -48, 440, -112, 184 )
@@ -89,4 +102,4 @@ mass = 1000.0
 physics_material_override = SubResource( 3 )
 stats = ExtResource( 2 )
 
-[connection signal="pressed" from="Cards/StartRoundButton" to="." method="_on_StartRoundButton_pressed"]
+[connection signal="pressed" from="UI/StartRoundButton" to="." method="_on_StartRoundButton_pressed"]

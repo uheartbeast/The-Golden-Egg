@@ -8,12 +8,14 @@ var EnemyStatsList = [
 ]
 
 var discardPile = ReferenceStash.discardPile
+var playerStats = ReferenceStash.playerStats as PlayerStats
 
 onready var hand: Hand = find_node("Hand")
 onready var cardStack: CardStack = find_node("CardStack")
 onready var startRoundButton: Button = find_node("StartRoundButton")
 
 func _ready():
+	ReferenceStash.playerStats.connect("coins_dropped", self, "drop_coins")
 	ReferenceStash.enemyTargetsStash.connect("empty", self, "_on_enemyTargetsStash_empty")
 
 func start_round():
@@ -44,7 +46,21 @@ func create_creature(CreatureScene, stats):
 	creature.global_position = $Position2D.global_position + Vector2(rand_range(-16, 16), rand_range(-16, 16))
 	return creature
 
+func drop_coins(amount, location):
+	for i in amount:
+		var coin = load("res://Coin.tscn").instance()
+		add_child(coin)
+		coin.global_position = location + Vector2(rand_range(-8, 8), rand_range(-8, 8))
+		yield(get_tree().create_timer(0.1), "timeout")
+
+func collect_coins():
+	var coins = get_tree().get_nodes_in_group("Coins")
+	for coin in coins:
+		coin.queue_free()
+		playerStats.coins += 1
+
 func _on_enemyTargetsStash_empty():
+	collect_coins()
 	startRoundButton.show()
 
 func _unhandled_input(event):
