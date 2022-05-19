@@ -7,7 +7,6 @@
 
 [sub_resource type="PhysicsMaterial" id=2]
 friction = 0.0
-bounce = 0.1
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -22,6 +21,7 @@ mode = 2
 mass = 2.0
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
+linear_damp = 1.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -13,4 +13,5 @@ func _on_coins_changed(coins, coins_change):
 	coinLabel.text = str(coins)
 
 func _on_mana_changed(mana, mana_change):
+	yield(get_tree(), "idle_frame")
 	manaTexture.rect_size.x = mana * 9

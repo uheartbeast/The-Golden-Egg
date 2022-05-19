@@ -17,3 +17,7 @@ texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="HealthBar" parent="." index="4"]
+margin_top = -26.0
+margin_bottom = -25.0

@@ -13,7 +13,7 @@ text = "8 Rats"
 
 [node name="Icon" parent="CardImage/VBoxContainer/CenterContainer" index="0"]
 margin_left = 24.0
-margin_top = 30.0
+margin_top = 27.0
 margin_right = 40.0
-margin_bottom = 46.0
+margin_bottom = 43.0
 texture = ExtResource( 1 )

@@ -10,5 +10,5 @@ speed = 0.0
 attack = 50
 attacks_per_second = 2
 attack_range = 1
-flying = false
+mass = 2
 sprite = ExtResource( 2 )

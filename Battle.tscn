@@ -106,6 +106,7 @@ script = SubResource( 2 )
 position = Vector2( 80, 176 )
 mass = 1000.0
 physics_material_override = SubResource( 3 )
+linear_damp = -1.0
 stats = ExtResource( 2 )
 
 [node name="HealthBar" parent="PlayerCreature" index="4"]
@@ -115,10 +116,12 @@ mouse_filter = 0
 
 [node name="PlayerCreature2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 256, 192 )
+linear_damp = -1.0
 stats = ExtResource( 10 )
 
 [node name="EnemyCreature" parent="." instance=ExtResource( 11 )]
 position = Vector2( 384, 192 )
+linear_damp = -1.0
 stats = ExtResource( 10 )
 
 [connection signal="pressed" from="UI/StartRoundButton" to="." method="_on_StartRoundButton_pressed"]

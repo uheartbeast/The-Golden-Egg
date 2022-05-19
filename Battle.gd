@@ -23,7 +23,7 @@ func _ready():
 
 func start_round():
 	playerStats.refresh_mana()
-	for i in 20:
+	for i in 15:
 		EnemyStatsList.shuffle()
 		var EnemyStats = EnemyStatsList.front()
 		create_creature(EnemyCreature, EnemyStats)
