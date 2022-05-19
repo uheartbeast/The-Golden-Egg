@@ -5,6 +5,7 @@
 [ext_resource path="res://Spells/FourWolvesSpell.tscn" type="PackedScene" id=3]
 
 [node name="FourWolvesCard" instance=ExtResource( 2 )]
+cost = 3
 spell = ExtResource( 3 )
 
 [node name="Label" parent="CardImage/VBoxContainer" index="0"]

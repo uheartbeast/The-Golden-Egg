@@ -1,6 +1,7 @@
 extends Control
 class_name Card
 
+export(int) var cost = 2
 export(PackedScene) var spell
 
 var hover = false setget set_hover

@@ -108,3 +108,4 @@ stats = ExtResource( 2 )
 
 [connection signal="pressed" from="UI/StartRoundButton" to="." method="_on_StartRoundButton_pressed"]
 [connection signal="card_purchased" from="UI/CardShop" to="." method="_on_CardShop_card_purchased"]
+[connection signal="skipped" from="UI/CardShop" to="." method="_on_CardShop_skipped"]

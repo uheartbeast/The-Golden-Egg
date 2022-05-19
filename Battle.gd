@@ -106,3 +106,7 @@ func _on_CardShop_card_purchased(CardScene):
 	cardStack.deck.shuffle()
 	cardShop.hide()
 	startRoundButton.show()
+
+func _on_CardShop_skipped():
+	cardShop.hide()
+	startRoundButton.show()

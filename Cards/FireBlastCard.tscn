@@ -3,3 +3,4 @@
 [ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
 
 [node name="FireBlastCard" instance=ExtResource( 1 )]
+cost = 3
