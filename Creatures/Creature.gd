@@ -40,7 +40,7 @@ func _ready():
 		stats.connect("no_health", self, "queue_free")
 		stats.connect("health_changed", self, "update_health_bar")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	behavior.execute()
 
 func change_behavior(NewBehaviorScript):
@@ -57,6 +57,7 @@ func attack(target):
 		var projectile = Projectile.instance()
 		projectile.damage = stats.attack
 		projectile.target = target
+		projectile.direction = global_position.direction_to(target.global_position)
 		get_tree().current_scene.add_child(projectile)
 		projectile.global_position = global_position
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Battle/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Creatures/GoldenDragonStats.tres" type="Resource" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Hand.tscn" type="PackedScene" id=7]
 [ext_resource path="res://StartingDeck.tres" type="Resource" id=8]
 [ext_resource path="res://UI/CardShop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Creatures/WolfStats.tres" type="Resource" id=10]
+[ext_resource path="res://Creatures/EnemyCreature.tscn" type="PackedScene" id=11]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Polygon2D
@@ -110,6 +112,14 @@ stats = ExtResource( 2 )
 margin_top = -33.0
 margin_bottom = -32.0
 mouse_filter = 0
+
+[node name="PlayerCreature2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 192 )
+stats = ExtResource( 10 )
+
+[node name="EnemyCreature" parent="." instance=ExtResource( 11 )]
+position = Vector2( 384, 192 )
+stats = ExtResource( 10 )
 
 [connection signal="pressed" from="UI/StartRoundButton" to="." method="_on_StartRoundButton_pressed"]
 [connection signal="card_purchased" from="UI/CardShop" to="." method="_on_CardShop_card_purchased"]

@@ -17,10 +17,12 @@ onready var cardShop: Control = find_node("CardShop")
 
 func _ready():
 	randomize()
-	ReferenceStash.playerStats.connect("coins_dropped", self, "drop_coins")
+	playerStats.connect("coins_dropped", self, "drop_coins")
 	ReferenceStash.enemyTargetsStash.connect("empty", self, "_on_enemyTargetsStash_empty")
+	playerStats.refresh_mana()
 
 func start_round():
+	playerStats.refresh_mana()
 	for i in 20:
 		EnemyStatsList.shuffle()
 		var EnemyStats = EnemyStatsList.front()
@@ -50,7 +52,7 @@ func create_creature(CreatureScene, stats):
 
 func drop_coins(amount, location):
 	for i in amount:
-		var coin = load("res://Coin.tscn").instance()
+		var coin = load("res://Battle/Coin.tscn").instance()
 		add_child(coin)
 		coin.global_position = location + Vector2(rand_range(-8, 8), rand_range(-8, 8))
 		yield(get_tree().create_timer(0.1), "timeout")
@@ -81,6 +83,9 @@ func _unhandled_input(event):
 		card.play(event.position)
 		hand.remove_child(card)
 		discardPile.add_card(load(card.filename))
+	
+	if event.is_action_pressed("ui_accept"):
+		playerStats.mana -= 1
 
 func discard_hand():
 	ReferenceStash.selectedCard = null

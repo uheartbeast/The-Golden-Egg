@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-max_health = 0
+max_health = 5000
 max_mana = 5

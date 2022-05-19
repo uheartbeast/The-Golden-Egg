@@ -20,7 +20,7 @@ func execute():
 		if velocity.x != 0: creature.update_direction_facing(sign(velocity.x))
 		creature.linear_velocity = creature.linear_velocity.move_toward(velocity, creature.stats.speed)
 	else:
-		creature.linear_velocity = creature.linear_velocity.move_toward(Vector2.ZERO, 20)
+		creature.linear_velocity = creature.linear_velocity.move_toward(Vector2.ZERO, creature.stats.speed)
 		creature.set_physics_process(false)
 		creature.attack(target)
 		timer.start(1.0 / float(creature.stats.attacks_per_second))

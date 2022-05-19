@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://PixelRPG.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Coin.png" type="Texture" id=2]
+[ext_resource path="res://UI/Coin.png" type="Texture" id=2]
 [ext_resource path="res://UI/CoinsAndMana.gd" type="Script" id=3]
+[ext_resource path="res://UI/Mana.png" type="Texture" id=4]
 
 [node name="CoinsAndMana" type="VBoxContainer"]
 margin_right = 21.0
@@ -25,3 +26,12 @@ margin_right = 21.0
 margin_bottom = 9.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
+
+[node name="ManaTexture" type="TextureRect" parent="."]
+margin_top = 16.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 0, 10 )
+size_flags_horizontal = 0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
