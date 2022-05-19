@@ -1,6 +1,6 @@
 extends Node2D
 
-var chain_amount = 10
+var chain_amount = 5
 var hit_targets = []
 
 onready var timer: = $Timer
@@ -14,7 +14,7 @@ func _ready():
 		global_position = target.global_position
 		rotation_degrees = rand_range(0, 360)
 		line.add_point(global_position)
-		target.stats.health -= 100
+		target.stats.health -= 250
 		hit_targets.append(target)
 		timer.start()
 		yield(timer, "timeout")
