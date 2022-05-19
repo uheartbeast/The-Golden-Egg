@@ -4,7 +4,7 @@ class_name Behavior
 var creature
 
 func _ready():
-	creature = owner as Creature
+	creature = owner
 
 func execute():
 	pass

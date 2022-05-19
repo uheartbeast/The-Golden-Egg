@@ -5,7 +5,7 @@
 [ext_resource path="res://Cards/SummonCard.tscn" type="PackedScene" id=3]
 
 [node name="FourWolvesCard" instance=ExtResource( 3 )]
-mana_cost = 3
+mana_cost = 2
 creatureStats = ExtResource( 2 )
 amount = 4
 
