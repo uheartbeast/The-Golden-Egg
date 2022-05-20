@@ -22,7 +22,7 @@ func _ready():
 	playerStats.refresh_mana()
 
 func start_round():
-	for i in 15:
+	for i in 100:
 		EnemyStatsList.shuffle()
 		var EnemyStats = EnemyStatsList.front()
 		create_creature(EnemyCreature, EnemyStats)
@@ -51,10 +51,13 @@ func create_creature(CreatureScene, stats):
 
 func drop_coins(amount, location):
 	for i in amount:
-		var coin = load("res://Battle/Coin.tscn").instance()
-		add_child(coin)
-		coin.global_position = location + Vector2(rand_range(-8, 8), rand_range(-8, 8))
+		call_deferred("drop_coin", location)
 		yield(get_tree().create_timer(0.1), "timeout")
+
+func drop_coin(location):
+	var coin = load("res://Battle/Coin.tscn").instance()
+	add_child(coin)
+	coin.global_position = location + Vector2(rand_range(-8, 8), rand_range(-8, 8))
 
 func collect_coins():
 	var coins = get_tree().get_nodes_in_group("Coins")

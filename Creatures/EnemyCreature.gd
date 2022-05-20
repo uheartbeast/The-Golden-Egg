@@ -1,4 +1,5 @@
 extends Creature
+class_name EnemyCreature
 
 var playerStats = ReferenceStash.playerStats as PlayerStats
 

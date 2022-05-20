@@ -14,8 +14,12 @@ onready var manaLabel: = find_node("ManaLabel")
 
 func set_hover(value):
 	hover = value
-	if hover: cardImage.self_modulate = Color.darkgray
-	else: cardImage.self_modulate = Color.black
+	if hover:
+		Engine.time_scale = 0.2
+		cardImage.self_modulate = Color.darkgray
+	else:
+		Engine.time_scale = 1.0
+		cardImage.self_modulate = Color.black
 
 func set_mana_cost(value):
 	mana_cost = value
@@ -29,17 +33,18 @@ func _on_Card_gui_input(event):
 			previousSelection.set_hover(false)
 		ReferenceStash.selectedCard = self
 		self.hover = true
-		Engine.time_scale = 0.25
 		get_tree().set_input_as_handled()
 
 func play(target_position):
-	Engine.time_scale = 1.0
 	var spell = SpellScene.instance()
 	spell.position = target_position
 	get_tree().current_scene.add_child(spell)
 	ReferenceStash.selectedCard = null
 	playerStats.mana -= mana_cost
 	return spell
+
+func _exit_tree():
+	Engine.time_scale = 1.0
 
 func _on_Card_mouse_entered():
 	cardImage.rect_position.y = -16

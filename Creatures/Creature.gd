@@ -19,6 +19,7 @@ onready var targetFinder: = $TargetFinder
 onready var attackTimer: = $AttackTimer
 onready var healthBar: = $HealthBar
 onready var behavior: = $ChaseAndAttackBehavior
+onready var animationPlayer: = $AnimationPlayer
 
 func set_stats(value):
 	stats = value

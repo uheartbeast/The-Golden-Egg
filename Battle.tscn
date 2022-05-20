@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Battle/Rock.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Creatures/GoldenDragonStats.tres" type="Resource" id=2]
+[ext_resource path="res://Creatures/GoldenEgg.tscn" type="PackedScene" id=2]
 [ext_resource path="res://CardStack.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Creatures/PlayerCreature.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Battle/Shield.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/CoinsAndMana.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Battle.gd" type="Script" id=6]
 [ext_resource path="res://Hand.tscn" type="PackedScene" id=7]
@@ -24,10 +24,6 @@ script/source = "extends Polygon2D
 func _ready():
 	polygon = get_parent().polygon
 "
-
-[sub_resource type="PhysicsMaterial" id=3]
-friction = 0.0
-bounce = 0.1
 
 [node name="Battle" type="YSort"]
 script = ExtResource( 6 )
@@ -106,20 +102,12 @@ polygon = PoolVector2Array( -32, -72, 712, -48, 656, 192, 616, 192, 624, 152, 60
 color = Color( 0.164706, 0.164706, 0.164706, 1 )
 script = SubResource( 2 )
 
-[node name="PlayerCreature" parent="." instance=ExtResource( 4 )]
-position = Vector2( 80, 176 )
-mass = 1000.0
-physics_material_override = SubResource( 3 )
-linear_damp = -1.0
-stats = ExtResource( 2 )
+[node name="GoldenEgg" parent="." instance=ExtResource( 2 )]
+position = Vector2( 80, 192 )
 
-[node name="HealthBar" parent="PlayerCreature" index="4"]
-margin_top = -33.0
-margin_bottom = -32.0
-mouse_filter = 0
+[node name="Shield" parent="GoldenEgg" instance=ExtResource( 4 )]
+position = Vector2( 0, -19 )
 
 [connection signal="pressed" from="UI/StartRoundButton" to="." method="_on_StartRoundButton_pressed"]
 [connection signal="card_purchased" from="UI/CardShop" to="." method="_on_CardShop_card_purchased"]
 [connection signal="skipped" from="UI/CardShop" to="." method="_on_CardShop_skipped"]
-
-[editable path="PlayerCreature"]

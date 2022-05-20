@@ -6,3 +6,6 @@
 [node name="EnemyCreature" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 alliance = 1
+
+[node name="BuffIcon" parent="." index="6"]
+position = Vector2( 0, 0 )
