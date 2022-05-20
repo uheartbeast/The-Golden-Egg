@@ -1,12 +1,5 @@
 extends YSort
 
-const EnemyCreature = preload("res://Creatures/EnemyCreature.tscn")
-
-var EnemyStatsList = [
-	preload("res://Creatures/WolfStats.tres"),
-	preload("res://Creatures/RatStats.tres"),
-]
-
 var discardPile = ReferenceStash.discardPile as Deck
 var playerStats = ReferenceStash.playerStats as PlayerStats
 
@@ -14,6 +7,11 @@ onready var hand: Hand = find_node("Hand")
 onready var cardStack: CardStack = find_node("CardStack")
 onready var startRoundButton: Button = find_node("StartRoundButton")
 onready var cardShop: Control = find_node("CardShop")
+onready var enemySpawner: = $EnemySpawner
+onready var spawnLocation1: = $SpawnLocation1
+onready var spawnLocation2: = $SpawnLocation2
+onready var spawnLocation3: = $SpawnLocation3
+onready var spawn_location_list = [spawnLocation1, spawnLocation2, spawnLocation3]
 
 func _ready():
 	randomize()
@@ -22,12 +20,15 @@ func _ready():
 	playerStats.refresh_mana()
 
 func start_round():
-	for i in 100:
-		EnemyStatsList.shuffle()
-		var EnemyStats = EnemyStatsList.front()
-		create_creature(EnemyCreature, EnemyStats)
-	
+	var spawn_locations = 1
+	if playerStats.battle_round > 5: spawn_locations = 2
+	if playerStats.battle_round > 10: spawn_locations = 3
+	spawn_location_list.shuffle()
+	for i in min(spawn_locations, 3):
+		var spawnLocation = spawn_location_list[i]
+		enemySpawner.spawn_group(playerStats.battle_round, spawnLocation.global_position, spawnLocation.global_position+Vector2(32, 0))
 	draw_cards(5)
+	Engine.time_scale = 0.2
 
 func draw_cards(amount: int):
 	for i in amount:
@@ -65,9 +66,23 @@ func collect_coins():
 		coin.queue_free()
 		playerStats.coins += 1
 
+func discard_hand():
+	ReferenceStash.selectedCard = null
+	for card in hand.get_children():
+		discardPile.add_card(load(card.filename))
+		hand.remove_child(card)
+
+func kill_units():
+	var playerCreatures = get_tree().get_nodes_in_group("PlayerCreatures")
+	for playerCreature in playerCreatures:
+		playerCreature.queue_free()
+
 func _on_enemyTargetsStash_empty():
+	playerStats.battle_round += 1
 	discard_hand()
 	playerStats.refresh_mana()
+	kill_units()
+	yield(get_tree().create_timer(0.5), "timeout")
 	collect_coins()
 	yield(get_tree().create_timer(0.5), "timeout")
 	cardShop.fill_shop()
@@ -91,12 +106,6 @@ func _unhandled_input(event):
 	
 	if event.is_action_pressed("ui_accept"):
 		playerStats.mana -= 1
-
-func discard_hand():
-	ReferenceStash.selectedCard = null
-	for card in hand.get_children():
-		discardPile.add_card(load(card.filename))
-		hand.remove_child(card)
 
 func end_game():
 	get_tree().change_scene("res://Screens/DefeatScreen.tscn")

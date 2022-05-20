@@ -7,8 +7,26 @@
 [node name="IceBlastCard" instance=ExtResource( 1 )]
 SpellScene = ExtResource( 2 )
 
-[node name="Label" parent="CardImage/VBoxContainer" index="0"]
+[node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
 text = "Ice Blast"
 
-[node name="Icon" parent="CardImage/VBoxContainer/CenterContainer" index="0"]
+[node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
+margin_left = 12.0
+margin_top = 0.0
+margin_right = 44.0
+margin_bottom = 32.0
 texture = ExtResource( 3 )
+
+[node name="InfoOne" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
+margin_bottom = 70.0
+text = "10 damage
+freeze for 4
+seconds"
+
+[node name="Control" parent="CardImage/MarginContainer/VBoxContainer" index="3"]
+margin_top = 72.0
+margin_bottom = 76.0
+
+[node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
+margin_top = 78.0
+margin_bottom = 84.0

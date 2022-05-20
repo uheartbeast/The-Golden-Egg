@@ -44,4 +44,8 @@ func _on_BuyButton_pressed():
 	ReferenceStash.selectedCard = null
 
 func _on_PassButton_pressed():
+	var selectedCard = ReferenceStash.selectedCard
+	if selectedCard is Card:
+		selectedCard.set_hover(false)
+		ReferenceStash.selectedCard = null
 	emit_signal("skipped")

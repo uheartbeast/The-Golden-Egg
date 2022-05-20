@@ -5,16 +5,17 @@
 [ext_resource path="res://Cards/SummonCard.tscn" type="PackedScene" id=3]
 
 [node name="FourWolvesCard" instance=ExtResource( 3 )]
+cost = 1
 mana_cost = 2
 creatureStats = ExtResource( 2 )
 amount = 4
 
-[node name="Label" parent="CardImage/VBoxContainer" index="0"]
+[node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
 text = "4 Wolves"
 
-[node name="Icon" parent="CardImage/VBoxContainer/CenterContainer" index="0"]
-margin_left = 20.0
-margin_top = 23.0
-margin_right = 44.0
-margin_bottom = 47.0
+[node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
+margin_left = 16.0
+margin_top = 4.0
+margin_right = 40.0
+margin_bottom = 28.0
 texture = ExtResource( 1 )

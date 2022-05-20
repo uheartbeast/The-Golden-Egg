@@ -8,15 +8,21 @@
 [node name="WallCard" instance=ExtResource( 1 )]
 cost = 1
 creatureStats = ExtResource( 3 )
-amount = 1
 CreatureScene = ExtResource( 4 )
 
-[node name="Label" parent="CardImage/VBoxContainer" index="0"]
+[node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
 text = "Wall"
 
-[node name="Icon" parent="CardImage/VBoxContainer/CenterContainer" index="0"]
-margin_left = 26.0
-margin_top = 14.0
-margin_right = 38.0
-margin_bottom = 62.0
+[node name="CenterContainer" parent="CardImage/MarginContainer/VBoxContainer" index="1"]
+margin_bottom = 60.0
+
+[node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
+margin_left = 22.0
+margin_top = 0.0
+margin_right = 34.0
+margin_bottom = 48.0
 texture = ExtResource( 2 )
+
+[node name="InfoOne" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
+margin_top = 62.0
+margin_bottom = 68.0

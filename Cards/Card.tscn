@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Cards/Card.gd" type="Script" id=2]
 [ext_resource path="res://UI/Mana.png" type="Texture" id=3]
-[ext_resource path="res://Spells/FireBlast.png" type="Texture" id=4]
 [ext_resource path="res://PixelRPG.tres" type="DynamicFont" id=5]
 
 [node name="Card" type="MarginContainer"]
@@ -39,13 +38,13 @@ margin_bottom = 10.0
 mouse_filter = 2
 custom_constants/separation = 0
 
-[node name="Label" type="Label" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_top = 2.0
 margin_right = 42.0
 margin_bottom = 8.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
-text = "Fire Blast"
+text = "Title"
 
 [node name="ManaLabel" type="Label" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 42.0
@@ -67,22 +66,22 @@ stretch_mode = 6
 margin_top = 12.0
 margin_right = 56.0
 margin_bottom = 44.0
+rect_min_size = Vector2( 0, 32 )
 mouse_filter = 2
 
 [node name="Icon" type="TextureRect" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 12.0
-margin_right = 44.0
-margin_bottom = 32.0
+margin_left = 28.0
+margin_top = 16.0
+margin_right = 28.0
+margin_bottom = 16.0
 mouse_filter = 2
-texture = ExtResource( 4 )
 
-[node name="Label2" type="Label" parent="CardImage/MarginContainer/VBoxContainer"]
+[node name="InfoOne" type="Label" parent="CardImage/MarginContainer/VBoxContainer"]
 margin_top = 46.0
 margin_right = 56.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
-text = "100 (burns)"
 
 [node name="Control" type="Control" parent="CardImage/MarginContainer/VBoxContainer"]
 margin_top = 54.0
@@ -91,15 +90,12 @@ margin_bottom = 58.0
 rect_min_size = Vector2( 0, 4 )
 mouse_filter = 2
 
-[node name="Label3" type="Label" parent="CardImage/MarginContainer/VBoxContainer"]
+[node name="InfoTwo" type="Label" parent="CardImage/MarginContainer/VBoxContainer"]
 margin_top = 60.0
 margin_right = 56.0
-margin_bottom = 84.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
-text = "has no effect
-on #fire
-creatures"
 
 [connection signal="gui_input" from="." to="." method="_on_Card_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_Card_mouse_entered"]

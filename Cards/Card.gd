@@ -11,6 +11,7 @@ var hover = false setget set_hover
 
 onready var cardImage: = $CardImage
 onready var manaLabel: = find_node("ManaLabel")
+onready var infoOne: = find_node("InfoOne")
 
 func set_hover(value):
 	hover = value

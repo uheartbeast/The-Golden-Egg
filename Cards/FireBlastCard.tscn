@@ -1,8 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Spells/FireBlast.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spells/FireBlast.png" type="Texture" id=3]
 
 [node name="FireBlastCard" instance=ExtResource( 1 )]
-cost = 3
 SpellScene = ExtResource( 2 )
+
+[node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "Fire blast"
+
+[node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
+margin_left = 12.0
+margin_top = 0.0
+margin_right = 44.0
+margin_bottom = 32.0
+texture = ExtResource( 3 )
+
+[node name="InfoOne" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
+text = "100 damage"
+
+[node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
+margin_bottom = 84.0
+text = "Does not
+affect #fire
+creatures"

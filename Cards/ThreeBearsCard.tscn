@@ -5,31 +5,21 @@
 [ext_resource path="res://Creatures/BearStats.tres" type="Resource" id=3]
 
 [node name="ThreeBearsCard" instance=ExtResource( 2 )]
-cost = 4
+cost = 3
 mana_cost = 2
 creatureStats = ExtResource( 3 )
 amount = 3
 
-[node name="Label" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+[node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
 text = "3 Bears"
 
-[node name="CenterContainer" parent="CardImage/MarginContainer/VBoxContainer" index="1"]
-margin_bottom = 36.0
-
 [node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
-margin_bottom = 24.0
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 44.0
+margin_bottom = 28.0
 texture = ExtResource( 1 )
-
-[node name="Label2" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
-margin_top = 38.0
-margin_bottom = 44.0
-text = ""
 
 [node name="Control" parent="CardImage/MarginContainer/VBoxContainer" index="3"]
 margin_top = 46.0
 margin_bottom = 50.0
-
-[node name="Label3" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
-margin_top = 52.0
-margin_bottom = 58.0
-text = ""

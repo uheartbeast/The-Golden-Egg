@@ -5,14 +5,30 @@
 [ext_resource path="res://Spells/LightningChain.tscn" type="PackedScene" id=3]
 
 [node name="LightningChainCard" instance=ExtResource( 1 )]
+cost = 4
+mana_cost = 2
 SpellScene = ExtResource( 3 )
 
-[node name="Label" parent="CardImage/VBoxContainer" index="0"]
-text = "Lighting Chain"
+[node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "Lightning"
 
-[node name="Icon" parent="CardImage/VBoxContainer/CenterContainer" index="0"]
-margin_left = 24.0
-margin_top = 27.0
-margin_right = 40.0
-margin_bottom = 43.0
+[node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
+margin_left = 20.0
+margin_top = 8.0
+margin_right = 36.0
+margin_bottom = 24.0
 texture = ExtResource( 2 )
+
+[node name="InfoOne" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
+margin_bottom = 70.0
+text = "250 damage
+Hits 5 targets
+in a chain"
+
+[node name="Control" parent="CardImage/MarginContainer/VBoxContainer" index="3"]
+margin_top = 72.0
+margin_bottom = 76.0
+
+[node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
+margin_top = 78.0
+margin_bottom = 84.0

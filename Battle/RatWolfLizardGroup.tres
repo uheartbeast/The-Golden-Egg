@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Battle/EnemyGroup.gd" type="Script" id=1]
+[ext_resource path="res://Creatures/LizardStats.tres" type="Resource" id=2]
+[ext_resource path="res://Creatures/WolfStats.tres" type="Resource" id=3]
+[ext_resource path="res://Creatures/RatStats.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+front_enemies_count = 12
+FrontEnemies = [ ExtResource( 4 ), ExtResource( 3 ) ]
+back_enemies_count = 3
+BackEnemies = [ ExtResource( 2 ) ]
