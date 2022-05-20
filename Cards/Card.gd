@@ -10,7 +10,7 @@ export(PackedScene) var SpellScene
 var hover = false setget set_hover
 
 onready var cardImage: = $CardImage
-onready var manaLabel: = $CardImage/VBoxContainer/HBoxContainer/ManaLabel
+onready var manaLabel: = find_node("ManaLabel")
 
 func set_hover(value):
 	hover = value
@@ -29,9 +29,11 @@ func _on_Card_gui_input(event):
 			previousSelection.set_hover(false)
 		ReferenceStash.selectedCard = self
 		self.hover = true
+		Engine.time_scale = 0.25
 		get_tree().set_input_as_handled()
 
 func play(target_position):
+	Engine.time_scale = 1.0
 	var spell = SpellScene.instance()
 	spell.position = target_position
 	get_tree().current_scene.add_child(spell)

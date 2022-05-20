@@ -11,4 +11,5 @@ attack = 20
 attacks_per_second = 2
 attack_range = 1
 size = 8
+tags = [ 0, 2 ]
 sprite = ExtResource( 2 )

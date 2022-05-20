@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Spells/BulkUpSpell.tscn" type="PackedScene" id=2]
+
+[node name="BulkUpCard" instance=ExtResource( 1 )]
+SpellScene = ExtResource( 2 )
+
+[node name="Label" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "BULK UP"
+
+[node name="Label2" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
+text = "+ 25% health"
+
+[node name="Label3" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
+margin_bottom = 75.0
+text = "#small
++50 health"
