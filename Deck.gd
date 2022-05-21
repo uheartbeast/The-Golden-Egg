@@ -1,7 +1,13 @@
 extends Resource
 class_name Deck
 
-export(Array, PackedScene) var cards = []
+export(Array, PackedScene) var cards = [] setget set_cards
+
+signal cards_amount_changed(cards_amount)
+
+func set_cards(value):
+	cards = value
+	emit_signal("cards_amount_changed", cards.size())
 
 func empty() -> bool:
 	return cards.empty()

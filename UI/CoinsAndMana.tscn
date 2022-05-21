@@ -28,6 +28,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "0"
 
 [node name="ManaTexture" type="TextureRect" parent="."]
+visible = false
 margin_top = 16.0
 margin_bottom = 26.0
 rect_min_size = Vector2( 0, 10 )
@@ -35,3 +36,6 @@ size_flags_horizontal = 0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 2
+
+[node name="CoinCollectTarget" type="Position2D" parent="."]
+position = Vector2( 6, 6 )

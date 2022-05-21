@@ -4,6 +4,7 @@ var playerStats = ReferenceStash.playerStats as PlayerStats
 
 onready var coinLabel = $Coins/Label
 onready var manaTexture: = $ManaTexture
+onready var coin_collect_target_location = $CoinCollectTarget.global_position
 
 func _ready():
 	playerStats.connect("coins_changed", self, "_on_coins_changed")

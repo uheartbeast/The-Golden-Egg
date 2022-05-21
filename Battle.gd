@@ -12,6 +12,7 @@ onready var spawnLocation1: = $SpawnLocation1
 onready var spawnLocation2: = $SpawnLocation2
 onready var spawnLocation3: = $SpawnLocation3
 onready var spawn_location_list = [spawnLocation1, spawnLocation2, spawnLocation3]
+onready var goldenEgg = $GoldenEgg
 
 func _ready():
 	randomize()
@@ -20,13 +21,16 @@ func _ready():
 	playerStats.refresh_mana()
 
 func start_round():
+	Events.emit_signal("disable_cards")
+	yield(draw_cards(playerStats.card_draw), "completed")
 	var spawn_locations = 1
 	spawn_location_list.shuffle()
 	for i in min(spawn_locations, 3):
 		var spawnLocation = spawn_location_list[i]
-		enemySpawner.spawn_group(playerStats.battle_round, spawnLocation.global_position, spawnLocation.global_position+Vector2(32, 0))
-	draw_cards(5)
+		var direction = goldenEgg.global_position.direction_to(spawnLocation.global_position)
+		enemySpawner.spawn_group(playerStats.battle_round, spawnLocation.global_position, spawnLocation.global_position + direction * 32)
 	Engine.time_scale = 0.2
+	Events.emit_signal("enable_cards")
 
 func draw_cards(amount: int):
 	for i in amount:
@@ -35,6 +39,7 @@ func draw_cards(amount: int):
 			shuffle_discard_pile_into_deck()
 			CardScene = cardStack.draw_card()
 		hand.add_card(CardScene)
+		yield(get_tree().create_timer(0.2), "timeout")
 
 func shuffle_discard_pile_into_deck():
 	discardPile.shuffle()
@@ -66,7 +71,14 @@ func collect_coins():
 
 func discard_hand():
 	ReferenceStash.selectedCard = null
-	for card in hand.get_children():
+	var cards = hand.get_children()
+	Events.emit_signal("disable_cards")
+	for card in cards:
+		playerStats.emit_signal("coins_dropped", 1, card.coinDrop.global_position)
+		yield(get_tree().create_timer(0.2), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
+	
+	for card in cards:
 		discardPile.add_card(load(card.filename))
 		hand.remove_child(card)
 
@@ -77,9 +89,9 @@ func kill_units():
 
 func _on_enemyTargetsStash_empty():
 	playerStats.battle_round += 1
-	discard_hand()
 	playerStats.refresh_mana()
 	kill_units()
+	yield(discard_hand(), "completed")
 	yield(get_tree().create_timer(0.5), "timeout")
 	collect_coins()
 	yield(get_tree().create_timer(0.5), "timeout")

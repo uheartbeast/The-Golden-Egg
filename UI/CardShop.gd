@@ -26,8 +26,8 @@ func fill_shop():
 	for i in 3:
 		var card = card_list[i].instance()
 		cards.add_child(card)
-		var cardCost = cardCosts.get_child(i).get_child(1)
-		cardCost.text = str(card.cost)
+		card.set_tag(card.cost)
+	Events.emit_signal("enable_cards")
 
 func _physics_process(delta):
 	var selectedCard = ReferenceStash.selectedCard
@@ -38,6 +38,7 @@ func _on_BuyButton_pressed():
 	var selectedCard = ReferenceStash.selectedCard
 	if not selectedCard is Card: return
 	if playerStats.coins >= selectedCard.cost:
+		selectedCard.hide_tag()
 		emit_signal("card_purchased", load(selectedCard.filename))
 		playerStats.coins -= selectedCard.cost
 	selectedCard.set_hover(false)

@@ -10,6 +10,7 @@ var coins = 0 setget set_coins
 var coins_damage = 0 setget set_coins_damage
 var coins_to_drop = 0
 var battle_round = 0
+var card_draw = 3
 
 signal coins_changed(coins, coins_change)
 signal coins_dropped(amount, position)

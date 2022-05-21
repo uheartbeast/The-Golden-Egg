@@ -18,15 +18,10 @@ margin_bottom = 32.0
 texture = ExtResource( 3 )
 
 [node name="InfoOne" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
-margin_bottom = 70.0
-text = "10 damage
-freeze for 4
-seconds"
-
-[node name="Control" parent="CardImage/MarginContainer/VBoxContainer" index="3"]
-margin_top = 72.0
-margin_bottom = 76.0
+text = "30 damage"
 
 [node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
-margin_top = 78.0
-margin_bottom = 84.0
+margin_bottom = 80.0
+text = "Freezes non
+#ice targets
+for 4 seconds"

@@ -7,8 +7,9 @@ func _physics_process(delta):
 	for body in bodies:
 		if not is_instance_valid(body): continue
 		body.apply_impulse(body.global_position, (body.global_position - global_position).normalized() * 200)
-		body.stats.health -= 10
-		body.change_behavior(FrozenBehaviorScript)
+		body.stats.health -= 30
+		if not CreatureStats.TAGS.ICE in body.stats.tags:
+			body.change_behavior(FrozenBehaviorScript)
 	if not bodies.empty(): set_physics_process(false)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Battle/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Creatures/GoldenEgg.tscn" type="PackedScene" id=2]
@@ -15,6 +15,20 @@
 [ext_resource path="res://Battle/EnemySpawner.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Battle/RatLizardGroup.tres" type="Resource" id=14]
 [ext_resource path="res://Battle/RatWolfLizardGroup.tres" type="Resource" id=15]
+[ext_resource path="res://PixelRPG.tres" type="DynamicFont" id=16]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0.541176, 0.172549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.823529, 0.333333, 0.00784314, 1 )
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Polygon2D
@@ -45,13 +59,19 @@ margin_left = -112.0
 margin_top = 8.0
 margin_right = -8.0
 margin_bottom = 32.0
+custom_fonts/font = ExtResource( 16 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
 text = "Start Round"
 
 [node name="CoinsAndMana" parent="UI" instance=ExtResource( 5 )]
 margin_left = 8.0
-margin_top = 8.0
+margin_top = 16.0
 margin_right = 29.0
-margin_bottom = 20.0
+margin_bottom = 28.0
 
 [node name="CardShop" parent="UI" instance=ExtResource( 9 )]
 visible = false
@@ -72,38 +92,47 @@ margin_right = 632.0
 margin_bottom = 352.0
 deck = ExtResource( 8 )
 
+[node name="Label" type="Label" parent="Cards"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 285.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 16 )
+text = "Gain +1 gold for each card left in your hand at the end of the round"
+
 [node name="SpawnLocation1" type="Position2D" parent="."]
-position = Vector2( 504, 160 )
+position = Vector2( 536, 136 )
 
 [node name="SpawnLocation2" type="Position2D" parent="."]
-position = Vector2( 416, 80 )
+position = Vector2( 152, 176 )
 
 [node name="SpawnLocation3" type="Position2D" parent="."]
-position = Vector2( 448, 192 )
+position = Vector2( 504, 208 )
 
 [node name="Rock" parent="." instance=ExtResource( 1 )]
-position = Vector2( 376, 128 )
+position = Vector2( 424, 104 )
 
 [node name="Rock2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 272, 160 )
+position = Vector2( 208, 184 )
 
 [node name="Rock6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 392, 224 )
+position = Vector2( 408, 232 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 __meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-polygon = PoolVector2Array( -32, -72, 712, -48, 656, 192, 616, 192, 624, 152, 600, 136, 600, 72, 536, 88, 488, 56, 448, 16, 416, 40, 376, 24, 312, 56, 256, 40, 216, 104, 144, 104, 104, 128, 32, 120, 24, 144, 16, 208, 32, 248, 80, 224, 112, 240, 136, 272, 176, 248, 208, 240, 240, 264, 304, 264, 400, 256, 416, 272, 432, 256, 472, 272, 528, 272, 568, 248, 616, 192, 656, 192, 728, 408, -48, 440, -112, 184 )
+polygon = PoolVector2Array( -32, -72, 712, -48, 656, 192, 616, 192, 624, 152, 600, 136, 600, 72, 536, 88, 488, 56, 448, 16, 416, 40, 376, 24, 312, 56, 256, 40, 216, 104, 144, 104, 104, 128, 32, 120, 24, 144, 16, 208, 32, 248, 80, 224, 112, 240, 136, 272, 176, 248, 208, 240, 240, 264, 304, 264, 392, 280, 432, 272, 464, 280, 488, 256, 528, 272, 568, 248, 616, 192, 656, 192, 728, 408, -48, 440, -112, 184 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2/CollisionPolygon2D"]
 color = Color( 0.164706, 0.164706, 0.164706, 1 )
 script = SubResource( 2 )
 
 [node name="GoldenEgg" parent="." instance=ExtResource( 2 )]
-position = Vector2( 80, 192 )
+position = Vector2( 328, 184 )
 
 [node name="Shield" parent="GoldenEgg" instance=ExtResource( 4 )]
 position = Vector2( 0, -19 )
