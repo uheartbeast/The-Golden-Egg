@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Battle/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Creatures/GoldenEgg.tscn" type="PackedScene" id=2]
@@ -18,9 +18,11 @@
 [ext_resource path="res://PixelRPG.tres" type="DynamicFont" id=16]
 [ext_resource path="res://UI/AreaOfEffect.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Normal.tres" type="StyleBox" id=18]
-[ext_resource path="res://Cards/TwoLizardsCard.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Battle/SnakeLizardGroup.tres" type="Resource" id=19]
 [ext_resource path="res://Pressed.tres" type="StyleBox" id=20]
 [ext_resource path="res://Hover.tres" type="StyleBox" id=21]
+[ext_resource path="res://Battle/SpiderBearGroup.tres" type="Resource" id=22]
+[ext_resource path="res://Battle/SnakeSpiderCobraGroup.tres" type="Resource" id=23]
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
@@ -48,7 +50,7 @@ script = ExtResource( 6 )
 [node name="AreaOfEffect" parent="AreaOfEffectLayer" instance=ExtResource( 17 )]
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 13 )]
-EnemyGroups = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 10 ) ]
+EnemyGroups = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 10 ) ]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -93,11 +95,6 @@ margin_top = -88.0
 margin_right = 112.0
 margin_bottom = 8.0
 mouse_filter = 2
-
-[node name="TwoLizardsCard" parent="Cards/Hand" instance=ExtResource( 19 )]
-margin_left = 80.0
-margin_right = 144.0
-margin_bottom = 96.0
 
 [node name="CardStack" parent="Cards" instance=ExtResource( 3 )]
 margin_left = 568.0
@@ -154,3 +151,4 @@ position = Vector2( 0, -19 )
 [connection signal="pressed" from="UI/StartRoundButton" to="." method="_on_StartRoundButton_pressed"]
 [connection signal="card_purchased" from="UI/CardShop" to="." method="_on_CardShop_card_purchased"]
 [connection signal="skipped" from="UI/CardShop" to="." method="_on_CardShop_skipped"]
+[connection signal="tree_exited" from="GoldenEgg" to="." method="_on_GoldenEgg_tree_exited"]

@@ -127,10 +127,8 @@ func _unhandled_input(event):
 		playerStats.mana -= 1
 
 func end_game():
+	yield(get_tree().create_timer(1.0), "timeout")
 	get_tree().change_scene("res://Screens/DefeatScreen.tscn")
-
-func _on_Creature10_tree_exited():
-	call_deferred("end_game")
 
 func _on_StartRoundButton_pressed():
 	startRoundButton.hide()
@@ -146,3 +144,6 @@ func _on_CardShop_card_purchased(CardScene):
 func _on_CardShop_skipped():
 	cardShop.hide()
 	startRoundButton.show()
+
+func _on_GoldenEgg_tree_exited():
+	call_deferred("end_game")

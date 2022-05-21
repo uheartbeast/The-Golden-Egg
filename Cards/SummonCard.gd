@@ -10,9 +10,10 @@ func _ready():
 	infoOne.text += str(creatureStats.attack*creatureStats.attacks_per_second)+" dps"
 	var string = ""
 	for i in creatureStats.tags.size():
+		var new_tag = creatureStats.tag_strings[creatureStats.tags[i]]
+		if (string+new_tag).length() >= 15: string += "\n"
 		string += creatureStats.tag_strings[creatureStats.tags[i]]
 		if i != creatureStats.tags.size(): string += " "
-		if string.length() >= 12: string += "\n"
 	infoTwo.text = string
 
 func play(target_position):

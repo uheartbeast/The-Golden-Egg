@@ -8,10 +8,10 @@
 cost = 1
 mana_cost = 2
 creatureStats = ExtResource( 2 )
-amount = 4
+amount = 5
 
 [node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-text = "4 Wolves"
+text = "5 Wolves"
 
 [node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
 margin_left = 16.0

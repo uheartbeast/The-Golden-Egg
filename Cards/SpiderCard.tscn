@@ -6,7 +6,10 @@
 
 [node name="SpiderCard" instance=ExtResource( 2 )]
 creatureStats = ExtResource( 1 )
-amount = 6
+amount = 15
+
+[node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "15 Spiders"
 
 [node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
 margin_left = 20.0

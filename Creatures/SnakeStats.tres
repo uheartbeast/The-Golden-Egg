@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource( 1 )
-max_health = 20
+max_health = 50
 speed = 45.0
 attack = 10
 attacks_per_second = 5
 attack_range = 1
 size = 8
-tags = [ 0, 1, 10 ]
+tags = [ 0, 10 ]
 sprite = ExtResource( 2 )
