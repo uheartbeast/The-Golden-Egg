@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Battle/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Creatures/GoldenEgg.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Battle/RatLizardGroup.tres" type="Resource" id=14]
 [ext_resource path="res://Battle/RatWolfLizardGroup.tres" type="Resource" id=15]
 [ext_resource path="res://PixelRPG.tres" type="DynamicFont" id=16]
+[ext_resource path="res://UI/AreaOfEffect.tscn" type="PackedScene" id=17]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 0.541176, 0.172549, 1 )
@@ -46,6 +47,10 @@ func _ready():
 
 [node name="Battle" type="YSort"]
 script = ExtResource( 6 )
+
+[node name="AreaOfEffectLayer" type="Node" parent="."]
+
+[node name="AreaOfEffect" parent="AreaOfEffectLayer" instance=ExtResource( 17 )]
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 13 )]
 EnemyGroups = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 10 ) ]

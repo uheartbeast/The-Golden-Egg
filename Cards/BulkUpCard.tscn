@@ -5,6 +5,7 @@
 [ext_resource path="res://Spells/BulkSpell.png" type="Texture" id=3]
 
 [node name="BulkUpCard" instance=ExtResource( 1 )]
+radius = 32
 SpellScene = ExtResource( 2 )
 
 [node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
@@ -21,6 +22,6 @@ texture = ExtResource( 3 )
 text = "+25% health"
 
 [node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
-margin_bottom = 75.0
+margin_bottom = 71.0
 text = "#small +50
 more health"

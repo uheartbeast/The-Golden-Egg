@@ -5,6 +5,7 @@ var playerStats = ReferenceStash.playerStats as PlayerStats
 
 export(int) var cost = 2
 export(int) var mana_cost = 1 setget set_mana_cost
+export(int) var radius = 16
 export(PackedScene) var SpellScene
 
 var hover = false setget set_hover
@@ -60,12 +61,16 @@ func _on_Card_gui_input(event):
 		ReferenceStash.selectedCard = self
 		self.hover = true
 		get_tree().set_input_as_handled()
+		print(radius)
+		if not tag.visible:
+			Events.emit_signal("set_area_of_effect", true, radius, Color.white)
 
 func play(target_position):
 	var spell = SpellScene.instance()
 	spell.position = target_position
 	get_tree().current_scene.add_child(spell)
 	ReferenceStash.selectedCard = null
+	Events.emit_signal("set_area_of_effect", false, 0, Color.white)
 #	playerStats.mana -= mana_cost
 	return spell
 

@@ -5,6 +5,7 @@
 [ext_resource path="res://Spells/IceBlast.png" type="Texture" id=3]
 
 [node name="IceBlastCard" instance=ExtResource( 1 )]
+radius = 24
 SpellScene = ExtResource( 2 )
 
 [node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]

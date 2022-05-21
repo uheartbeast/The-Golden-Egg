@@ -105,6 +105,7 @@ func _unhandled_input(event):
 		if not card is Card: return
 		card.set_hover(false)
 		ReferenceStash.selectedCard = null
+		Events.emit_signal("set_area_of_effect", false, 0, Color.white)
 	
 	if event.is_action_pressed("mouse_left"):
 		var card = ReferenceStash.selectedCard
