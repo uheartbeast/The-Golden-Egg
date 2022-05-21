@@ -1,15 +1,15 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Creatures/CreatureStats.gd" type="Script" id=1]
-[ext_resource path="res://Creatures/Bear.png" type="Texture" id=2]
+[ext_resource path="res://Creatures/Snake.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-max_health = 500
-speed = 30.0
-attack = 100
-attacks_per_second = 2
+max_health = 20
+speed = 45.0
+attack = 10
+attacks_per_second = 5
 attack_range = 1
-size = 12
-tags = [ 3, 4, 8 ]
+size = 8
+tags = [ 0, 1, 10 ]
 sprite = ExtResource( 2 )

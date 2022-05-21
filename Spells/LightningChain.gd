@@ -14,7 +14,7 @@ func _ready():
 		global_position = target.global_position
 		rotation_degrees = rand_range(0, 360)
 		line.add_point(global_position)
-		target.stats.health -= 250
+		target.stats.health -= 500
 		hit_targets.append(target)
 		timer.start()
 		yield(timer, "timeout")

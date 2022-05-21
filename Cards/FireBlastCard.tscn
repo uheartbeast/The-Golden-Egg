@@ -23,6 +23,6 @@ text = "100 damage"
 
 [node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
 margin_bottom = 80.0
-text = "#fire
-creatures take
-half damage"
+text = "deal 3x
+damage to
+#ice creatures"

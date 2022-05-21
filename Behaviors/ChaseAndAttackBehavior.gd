@@ -26,8 +26,13 @@ func execute():
 	else:
 		creature.linear_velocity = Vector2.ZERO
 		creature.set_physics_process(false)
+		timer.start((1.0 / float(creature.stats.attacks_per_second))/2)
+		yield(timer, "timeout")
+		creature.set_physics_process(true)
+		
+		creature.set_physics_process(false)
 		creature.attack(target)
-		timer.start(1.0 / float(creature.stats.attacks_per_second))
+		timer.start((1.0 / float(creature.stats.attacks_per_second))/2)
 		yield(timer, "timeout")
 		creature.set_physics_process(true)
 

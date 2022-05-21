@@ -3,7 +3,7 @@ class_name CreatureStats
 
 enum TAGS {
 	FAST, SMALL, PACK, SLOW, BULKY, RANGED, FIRE,
-	ELECTRIC, ICE, BARRIER,
+	ELECTRIC, ICE, BARRIER, VENOMOUS
 }
 
 export(float) var speed
@@ -16,5 +16,5 @@ export(StreamTexture) var sprite
 
 var tag_strings = [
 	"#fast", "#small", "#pack", "#slow", "#bulky", "#ranged", "#fire",
-	"#electric", "#ice", "#barrier",
+	"#electric", "#ice", "#barrier", "#venomous",
 ]

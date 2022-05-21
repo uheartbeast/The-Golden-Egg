@@ -5,10 +5,14 @@ var playerStats = ReferenceStash.playerStats as PlayerStats
 
 export(Array, PackedScene) var card_list
 
+var draw_upgrade_cost = 10
+
 onready var buyButton: = find_node("BuyButton")
 onready var cards: = find_node("Cards")
 onready var cardCosts: = find_node("CardCosts")
 onready var notEnough: = find_node("NotEnough")
+onready var maxCardsInHandLabel: = find_node("MaxCardsInHandLabel")
+onready var handSizeUpgradeCostLabel: = find_node("HandSizeUpgradeCostLabel")
 
 signal card_purchased(CardScene)
 signal skipped
@@ -50,3 +54,11 @@ func _on_PassButton_pressed():
 		selectedCard.set_hover(false)
 		ReferenceStash.selectedCard = null
 	emit_signal("skipped")
+
+func _on_Button_pressed():
+	if playerStats.coins >= draw_upgrade_cost:
+		playerStats.coins -= draw_upgrade_cost
+		draw_upgrade_cost *= 2
+		playerStats.card_draw += 1
+		maxCardsInHandLabel.text = "Max cards in hand: "+str(playerStats.card_draw)
+		handSizeUpgradeCostLabel.text = "(costs "+str(draw_upgrade_cost)+" coins)"

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://StatusEffects/Poisoned.gd" type="Script" id=1]
+[ext_resource path="res://StatusEffects/Poisoned.png" type="Texture" id=2]
+
+[node name="Poisoned" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Frequency" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="Duration" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -3 )
+texture = ExtResource( 2 )
+
+[connection signal="timeout" from="Frequency" to="." method="_on_Frequency_timeout"]
+[connection signal="timeout" from="Duration" to="." method="_on_Duration_timeout"]

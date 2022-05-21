@@ -13,8 +13,10 @@ onready var spawnLocation2: = $SpawnLocation2
 onready var spawnLocation3: = $SpawnLocation3
 onready var spawn_location_list = [spawnLocation1, spawnLocation2, spawnLocation3]
 onready var goldenEgg = $GoldenEgg
+onready var roundLabel: = find_node("RoundLabel")
 
 func _ready():
+	update_round_label()
 	randomize()
 	playerStats.connect("coins_dropped", self, "drop_coins")
 	ReferenceStash.enemyTargetsStash.connect("empty", self, "_on_enemyTargetsStash_empty")
@@ -87,6 +89,9 @@ func kill_units():
 	for playerCreature in playerCreatures:
 		playerCreature.queue_free()
 
+func update_round_label():
+	roundLabel.text = "Round: "+str(playerStats.battle_round+1)
+
 func _on_enemyTargetsStash_empty():
 	playerStats.battle_round += 1
 	playerStats.refresh_mana()
@@ -133,6 +138,7 @@ func _on_CardShop_card_purchased(CardScene):
 	cardStack.deck.shuffle()
 	cardShop.hide()
 	startRoundButton.show()
+	update_round_label()
 
 func _on_CardShop_skipped():
 	cardShop.hide()

@@ -5,7 +5,7 @@ func _physics_process(delta):
 	for body in bodies:
 		if not is_instance_valid(body): continue
 		var damage = 100
-		if CreatureStats.TAGS.FIRE in body.stats.tags: damage = damage * 0.5
+		if CreatureStats.TAGS.ICE in body.stats.tags: damage = damage * 3
 		body.apply_impulse(body.global_position, (body.global_position - global_position).normalized() * 300)
 		body.stats.health -= damage
 	if not bodies.empty(): set_physics_process(false)

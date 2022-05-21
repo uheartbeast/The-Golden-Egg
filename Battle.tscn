@@ -53,17 +53,26 @@ script = ExtResource( 6 )
 [node name="AreaOfEffect" parent="AreaOfEffectLayer" instance=ExtResource( 17 )]
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 13 )]
-EnemyGroups = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 10 ) ]
+EnemyGroups = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 10 ), ExtResource( 10 ) ]
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="RoundLabel" type="Label" parent="UI"]
+margin_left = 601.0
+margin_top = 8.0
+margin_right = 632.0
+margin_bottom = 14.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 16 )
+text = "Round: 1"
 
 [node name="StartRoundButton" type="Button" parent="UI"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -112.0
-margin_top = 8.0
+margin_top = 16.0
 margin_right = -8.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 16 )
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )

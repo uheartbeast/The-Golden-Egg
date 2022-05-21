@@ -10,6 +10,7 @@ enum ALLIANCE {
 
 var targets = []
 var defaultBehaviorScript
+var poisoned = null
 
 export(ALLIANCE) var alliance = ALLIANCE.FRIEND
 export(Resource) var stats setget set_stats
@@ -56,8 +57,16 @@ func change_behavior(NewBehaviorScript):
 	set_physics_process(true)
 
 func attack(target):
+	if not is_instance_valid(target): return
 	if stats.attack_range == 1:
 		target.stats.health -= stats.attack
+		if CreatureStats.TAGS.VENOMOUS in stats.tags:
+			if not target.poisoned:
+				var poison = load("res://StatusEffects/Poisoned.tscn").instance()
+				target.add_child(poison)
+				target.poisoned = poison
+			else:
+				target.poisoned.set_duration(10)
 	elif stats.attack_range > 1:
 		var projectile = Projectile.instance()
 		projectile.damage = stats.attack

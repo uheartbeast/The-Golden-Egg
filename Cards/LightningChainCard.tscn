@@ -20,15 +20,15 @@ margin_bottom = 24.0
 texture = ExtResource( 2 )
 
 [node name="InfoOne" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
-margin_bottom = 70.0
-text = "250 damage
+margin_bottom = 66.0
+text = "500 damage
 Hits 5 targets
 in a chain"
 
 [node name="Control" parent="CardImage/MarginContainer/VBoxContainer" index="3"]
-margin_top = 72.0
-margin_bottom = 76.0
+margin_top = 68.0
+margin_bottom = 72.0
 
 [node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
-margin_top = 78.0
-margin_bottom = 84.0
+margin_top = 74.0
+margin_bottom = 80.0

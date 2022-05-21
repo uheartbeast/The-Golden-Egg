@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource( 1 )
-front_enemies_count = 15
-FrontEnemies = [ ExtResource( 2 ), ExtResource( 4 ) ]
+front_enemies_count = 3
+FrontEnemies = [ ExtResource( 2 ) ]
 back_enemies_count = 6
-BackEnemies = [ ExtResource( 3 ) ]
+BackEnemies = [ ExtResource( 3 ), ExtResource( 4 ) ]
