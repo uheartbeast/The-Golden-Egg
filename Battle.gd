@@ -21,8 +21,6 @@ func _ready():
 
 func start_round():
 	var spawn_locations = 1
-	if playerStats.battle_round > 5: spawn_locations = 2
-	if playerStats.battle_round > 10: spawn_locations = 3
 	spawn_location_list.shuffle()
 	for i in min(spawn_locations, 3):
 		var spawnLocation = spawn_location_list[i]

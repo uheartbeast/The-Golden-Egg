@@ -12,6 +12,7 @@ var hover = false setget set_hover
 onready var cardImage: = $CardImage
 onready var manaLabel: = find_node("ManaLabel")
 onready var infoOne: = find_node("InfoOne")
+onready var infoTwo: = find_node("InfoTwo")
 
 func set_hover(value):
 	hover = value
@@ -25,7 +26,7 @@ func set_hover(value):
 func set_mana_cost(value):
 	mana_cost = value
 	var manaLabel = find_node("ManaLabel")
-	if manaLabel: manaLabel.text = "-"+str(mana_cost)
+	if manaLabel: manaLabel.text = str(mana_cost)
 
 func _on_Card_gui_input(event):
 	if event.is_action_pressed("mouse_left") and playerStats.mana >= mana_cost:

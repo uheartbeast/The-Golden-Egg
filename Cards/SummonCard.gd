@@ -6,12 +6,14 @@ export(PackedScene) var CreatureScene = load("res://Creatures/PlayerCreature.tsc
 
 func _ready():
 	._ready()
+	infoOne.text = str(creatureStats.health)+" health\n"
+	infoOne.text += str(creatureStats.attack*creatureStats.attacks_per_second)+" dps"
 	var string = ""
 	for i in creatureStats.tags.size():
 		string += creatureStats.tag_strings[creatureStats.tags[i]]
 		if i != creatureStats.tags.size(): string += " "
 		if string.length() >= 12: string += "\n"
-	infoOne.text = string
+	infoTwo.text = string
 
 func play(target_position):
 	var spell = .play(target_position)
