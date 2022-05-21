@@ -13,6 +13,7 @@ onready var cardCosts: = find_node("CardCosts")
 onready var notEnough: = find_node("NotEnough")
 onready var maxCardsInHandLabel: = find_node("MaxCardsInHandLabel")
 onready var handSizeUpgradeCostLabel: = find_node("HandSizeUpgradeCostLabel")
+onready var drawLimitTag: = find_node("TagAnchor")
 
 signal card_purchased(CardScene)
 signal skipped
@@ -60,5 +61,5 @@ func _on_Button_pressed():
 		playerStats.coins -= draw_upgrade_cost
 		draw_upgrade_cost *= 2
 		playerStats.card_draw += 1
-		maxCardsInHandLabel.text = "Max cards in hand: "+str(playerStats.card_draw)
-		handSizeUpgradeCostLabel.text = "(costs "+str(draw_upgrade_cost)+" coins)"
+		maxCardsInHandLabel.text = "Card Draw Limit: "+str(playerStats.card_draw)
+		drawLimitTag.set_price(draw_upgrade_cost)

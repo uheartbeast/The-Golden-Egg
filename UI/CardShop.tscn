@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Cards/IceBlastCard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cards/LightningChainCard.tscn" type="PackedScene" id=2]
@@ -7,18 +7,37 @@
 [ext_resource path="res://Cards/RageCard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/CardShop.gd" type="Script" id=6]
 [ext_resource path="res://Cards/TwoLizardsCard.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Cards/WallCard.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/TagAnchor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Cards/ThreeBearsCard.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Cards/BulkUpCard.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Cards/CobraCard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Cards/SnakeCard.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Cards/SpiderCard.tscn" type="PackedScene" id=13]
 
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+
 [node name="CardShop" type="CenterContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
-card_list = [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ) ]
+card_list = [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ) ]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 margin_left = 80.0
@@ -26,12 +45,11 @@ margin_top = 60.0
 margin_right = 560.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 480, 240 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 473.0
-margin_bottom = 233.0
+margin_right = 480.0
+margin_bottom = 240.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
@@ -40,14 +58,14 @@ custom_constants/margin_bottom = 4
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 462.0
-margin_bottom = 222.0
+margin_right = 476.0
+margin_bottom = 236.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer"]
-margin_left = 101.0
-margin_top = 56.0
-margin_right = 357.0
-margin_bottom = 162.0
+margin_left = 108.0
+margin_top = 63.0
+margin_right = 364.0
+margin_bottom = 169.0
 rect_min_size = Vector2( 256, 0 )
 custom_constants/separation = 8
 
@@ -57,26 +75,38 @@ margin_bottom = 20.0
 alignment = 1
 
 [node name="MaxCardsInHandLabel" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 39.0
+margin_left = 57.0
 margin_top = 7.0
-margin_right = 123.0
+margin_right = 130.0
 margin_bottom = 13.0
 custom_fonts/font = ExtResource( 4 )
-text = "Max Cards in hand: 3"
+text = "Card Draw Limit: 3"
 align = 1
 valign = 1
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 127.0
-margin_right = 155.0
+margin_left = 134.0
+margin_right = 198.0
 margin_bottom = 20.0
-text = "+1"
+rect_min_size = Vector2( 64, 20 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 6 )
+text = "upgrade (+1)"
+
+[node name="TagAnchor" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/Button" instance=ExtResource( 8 )]
+position = Vector2( 46, 0 )
 
 [node name="HandSizeUpgradeCostLabel" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 159.0
-margin_top = 7.0
-margin_right = 217.0
-margin_bottom = 13.0
+visible = false
+margin_left = 169.0
+margin_top = 3.0
+margin_right = 227.0
+margin_bottom = 9.0
 custom_fonts/font = ExtResource( 4 )
 text = "(costs 10 coins)"
 align = 1
@@ -117,31 +147,51 @@ margin_bottom = 106.0
 rect_min_size = Vector2( 0, 24 )
 
 [node name="NotEnough" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
-margin_right = 256.0
+margin_right = 126.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 24 )
 size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
 text = "Not enough gold for that card!"
 align = 1
 valign = 1
 
 [node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
-visible = false
-margin_left = 194.0
-margin_right = 321.0
+margin_left = 130.0
+margin_right = 256.0
 margin_bottom = 24.0
-rect_min_size = Vector2( 0, 24 )
+rect_min_size = Vector2( 64, 20 )
 size_flags_horizontal = 3
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 6 )
 text = "Buy Selected Card"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="PassButton" type="Button" parent="PanelContainer"]
-margin_left = 453.0
-margin_top = 7.0
-margin_right = 473.0
-margin_bottom = 27.0
-size_flags_horizontal = 10
+margin_left = 464.0
+margin_right = 480.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+size_flags_horizontal = 8
 size_flags_vertical = 0
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 6 )
 text = "X"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/BuyButton" to="." method="_on_BuyButton_pressed"]

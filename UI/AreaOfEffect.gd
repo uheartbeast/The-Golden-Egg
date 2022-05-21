@@ -14,7 +14,6 @@ func _on_set_area_of_effect(is_visible, radius, color):
 	visible = is_visible
 	self.radius = radius
 	self.color = color
-	print(radius)
 
 func _draw():
 	draw_circle(get_local_mouse_position(), radius, color)

@@ -9,7 +9,7 @@ radius = 32
 SpellScene = ExtResource( 2 )
 
 [node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-text = "BULK UP"
+text = "Bulk Up"
 
 [node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
 margin_left = 12.0

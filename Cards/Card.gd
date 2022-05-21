@@ -61,7 +61,6 @@ func _on_Card_gui_input(event):
 		ReferenceStash.selectedCard = self
 		self.hover = true
 		get_tree().set_input_as_handled()
-		print(radius)
 		if not tag.visible:
 			Events.emit_signal("set_area_of_effect", true, radius, Color.white)
 

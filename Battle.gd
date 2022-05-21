@@ -25,8 +25,11 @@ func _ready():
 func start_round():
 	Events.emit_signal("disable_cards")
 	yield(draw_cards(playerStats.card_draw), "completed")
-	var spawn_locations = 1
 	spawn_location_list.shuffle()
+	if playerStats.battle_round > enemySpawner.EnemyGroups.size():
+		playerStats.spawn_points += 1
+		playerStats.battle_round = 0
+	var spawn_locations = playerStats.spawn_points
 	for i in min(spawn_locations, 3):
 		var spawnLocation = spawn_location_list[i]
 		var direction = goldenEgg.global_position.direction_to(spawnLocation.global_position)
