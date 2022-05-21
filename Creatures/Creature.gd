@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name Creature
 
-const Projectile = preload("res://Projectile.tscn")
+const Projectile = preload("res://Projectiles/Projectile.tscn")
 
 enum ALLIANCE {
 	FRIEND,
@@ -68,7 +68,11 @@ func attack(target):
 			else:
 				target.poisoned.set_duration(10)
 	elif stats.attack_range > 1:
-		var projectile = Projectile.instance()
+		var projectile
+		if stats.projectile is PackedScene:
+			projectile = stats.projectile.instance()
+		else:
+			projectile = Projectile.instance()
 		projectile.damage = stats.attack
 		projectile.target = target
 		projectile.direction = global_position.direction_to(target.global_position)

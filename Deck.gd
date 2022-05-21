@@ -13,13 +13,17 @@ func empty() -> bool:
 	return cards.empty()
 
 func draw_card() -> PackedScene:
-	return cards.pop_front()
+	var card = cards.pop_front()
+	emit_signal("cards_amount_changed", cards.size())
+	return card
 
 func add_card(card: PackedScene):
 	cards.append(card)
+	emit_signal("cards_amount_changed", cards.size())
 
 func shuffle():
 	cards.shuffle()
 
 func clear():
 	cards = []
+	emit_signal("cards_amount_changed", cards.size())

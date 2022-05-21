@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Creatures/CreatureStats.gd" type="Script" id=1]
+[ext_resource path="res://Creatures/Spider.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+max_health = 20
+speed = 80.0
+attack = 50
+attacks_per_second = 2
+attack_range = 1
+size = 4
+tags = [ 0, 1 ]
+sprite = ExtResource( 2 )

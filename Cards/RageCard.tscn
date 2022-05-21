@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Spells/RageSpell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spells/Circle.png" type="Texture" id=3]
+
+[node name="RageCard" instance=ExtResource( 2 )]
+cost = 5
+radius = 32
+SpellScene = ExtResource( 1 )
+
+[node name="VBoxContainer" parent="CardImage/MarginContainer" index="0"]
+margin_right = 61.0
+
+[node name="HBoxContainer" parent="CardImage/MarginContainer/VBoxContainer" index="0"]
+margin_right = 57.0
+
+[node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+margin_right = 57.0
+text = "Rage"
+
+[node name="CenterContainer" parent="CardImage/MarginContainer/VBoxContainer" index="1"]
+margin_right = 57.0
+
+[node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
+self_modulate = Color( 1, 0, 0, 0.494118 )
+margin_left = 12.0
+margin_top = 0.0
+margin_right = 44.0
+margin_bottom = 32.0
+texture = ExtResource( 3 )
+
+[node name="InfoOne" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
+margin_right = 57.0
+margin_bottom = 57.0
+text = "Targets gain
+2x attack"
+
+[node name="Control" parent="CardImage/MarginContainer/VBoxContainer" index="3"]
+margin_top = 59.0
+margin_right = 57.0
+margin_bottom = 63.0
+
+[node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
+margin_top = 65.0
+margin_right = 57.0
+margin_bottom = 89.0
+text = "#slow
+creatures gain
++2 att per sec"

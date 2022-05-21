@@ -19,7 +19,7 @@ margin_bottom = 28.0
 texture = ExtResource( 3 )
 
 [node name="InfoOne" parent="CardImage/MarginContainer/VBoxContainer" index="2"]
-text = "+25% health"
+text = "+50% health"
 
 [node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
 margin_bottom = 71.0

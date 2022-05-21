@@ -13,6 +13,7 @@ export(int) var attack_range = 1
 export(int) var size = 8
 export(Array, TAGS) var tags
 export(StreamTexture) var sprite
+export(PackedScene) var projectile
 
 var tag_strings = [
 	"#fast", "#small", "#pack", "#slow", "#bulky", "#ranged", "#fire",

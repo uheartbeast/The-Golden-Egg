@@ -7,10 +7,10 @@
 [node name="TwoLizardsCard" instance=ExtResource( 3 )]
 mana_cost = 2
 creatureStats = ExtResource( 1 )
-amount = 2
+amount = 3
 
 [node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-text = "2 Lizards"
+text = "3 Lizards"
 
 [node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
 margin_left = 16.0
@@ -18,7 +18,3 @@ margin_top = 4.0
 margin_right = 40.0
 margin_bottom = 28.0
 texture = ExtResource( 2 )
-
-[node name="Control" parent="CardImage/MarginContainer/VBoxContainer" index="3"]
-margin_top = 46.0
-margin_bottom = 50.0
