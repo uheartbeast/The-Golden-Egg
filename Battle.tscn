@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Battle/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Creatures/GoldenEgg.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Hand.tscn" type="PackedScene" id=7]
 [ext_resource path="res://StartingDeck.tres" type="Resource" id=8]
 [ext_resource path="res://UI/CardShop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Battle/BearWolfLizardGroup.tres" type="Resource" id=10]
 [ext_resource path="res://Battle/WolfRatGroup.tres" type="Resource" id=11]
 [ext_resource path="res://Battle/WolfLizardGroup.tres" type="Resource" id=12]
 [ext_resource path="res://Battle/EnemySpawner.tscn" type="PackedScene" id=13]
@@ -33,7 +34,7 @@ func _ready():
 script = ExtResource( 6 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 13 )]
-EnemyGroups = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 15 ) ]
+EnemyGroups = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 10 ) ]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
