@@ -1,7 +1,8 @@
-extends TextureRect
+extends ColorRect
 class_name CardStack
 
 export(Resource) var deck
+export(String) var title = "Cards"
 
 onready var amountLabel: = find_node("Amount")
 
@@ -14,7 +15,7 @@ func empty() -> bool:
 	return deck.empty()
 
 func update_amountLabel(amount):
-	amountLabel.text = "Cards\n"+str(amount)
+	amountLabel.text = title+"\n"+str(amount)
 
 func draw_card() -> PackedScene:
 	var card = deck.draw_card()

@@ -31,6 +31,7 @@ func set_stats(value):
 	if collider and stats.size > 8:
 		collider.shape = collider.shape.duplicate()
 		collider.shape.radius = stats.size
+	mass = stats.size
 
 func update_direction_facing(direction):
 	var sprite = find_node("Sprite")

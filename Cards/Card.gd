@@ -59,6 +59,7 @@ func _on_Card_gui_input(event):
 		if previousSelection is Control:
 			previousSelection.set_hover(false)
 		ReferenceStash.selectedCard = self
+		Events.emit_signal("card_clicked", self)
 		self.hover = true
 		get_tree().set_input_as_handled()
 		if not tag.visible:

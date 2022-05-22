@@ -24,6 +24,7 @@ func execute():
 	if target_distance > creature.stats.attack_range * 24 or target is Position2D:
 		chase(target)
 	else:
+		creature.mass = 400
 		creature.linear_velocity = Vector2.ZERO
 		creature.set_physics_process(false)
 		timer.start((1.0 / float(creature.stats.attacks_per_second))/2)
@@ -35,6 +36,7 @@ func execute():
 		timer.start((1.0 / float(creature.stats.attacks_per_second))/2)
 		yield(timer, "timeout")
 		creature.set_physics_process(true)
+		creature.mass = creature.stats.size
 
 func chase(target):
 	var target_direction = target.global_position - creature.global_position

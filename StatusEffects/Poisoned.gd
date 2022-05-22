@@ -6,7 +6,7 @@ func set_duration(time):
 func _on_Frequency_timeout():
 	var parent = get_parent()
 	if not parent is Creature: return
-	parent.stats.health -= 20
+	parent.stats.health -= parent.stats.max_health/12
 
 func _on_Duration_timeout():
 	var parent = get_parent()

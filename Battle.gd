@@ -14,6 +14,7 @@ onready var spawnLocation3: = $SpawnLocation3
 onready var spawn_location_list = [spawnLocation1, spawnLocation2, spawnLocation3]
 onready var goldenEgg = $GoldenEgg
 onready var roundLabel: = find_node("RoundLabel")
+onready var timer: = $Timer
 
 func _ready():
 	update_round_label()
@@ -24,6 +25,7 @@ func _ready():
 
 func start_round():
 	Events.emit_signal("disable_cards")
+	Engine.time_scale = 1.0
 	yield(draw_cards(playerStats.card_draw), "completed")
 	spawn_location_list.shuffle()
 	if playerStats.battle_round > enemySpawner.EnemyGroups.size():
@@ -44,7 +46,8 @@ func draw_cards(amount: int):
 			shuffle_discard_pile_into_deck()
 			CardScene = cardStack.draw_card()
 		hand.add_card(CardScene)
-		yield(get_tree().create_timer(0.2), "timeout")
+		timer.start(0.2)
+		yield(timer, "timeout")
 
 func shuffle_discard_pile_into_deck():
 	discardPile.shuffle()
@@ -61,7 +64,8 @@ func create_creature(CreatureScene, stats):
 func drop_coins(amount, location):
 	for i in amount:
 		call_deferred("drop_coin", location)
-		yield(get_tree().create_timer(0.1), "timeout")
+		timer.start(0.1)
+		yield(timer, "timeout")
 
 func drop_coin(location):
 	var coin = load("res://Battle/Coin.tscn").instance()
@@ -80,8 +84,10 @@ func discard_hand():
 	Events.emit_signal("disable_cards")
 	for card in cards:
 		playerStats.emit_signal("coins_dropped", 1, card.coinDrop.global_position)
-		yield(get_tree().create_timer(0.2), "timeout")
-	yield(get_tree().create_timer(0.5), "timeout")
+		timer.start(0.2)
+		yield(timer, "timeout")
+	timer.start(0.5)
+	yield(timer, "timeout")
 	
 	for card in cards:
 		discardPile.add_card(load(card.filename))
@@ -101,9 +107,11 @@ func _on_enemyTargetsStash_empty():
 	playerStats.refresh_mana()
 	kill_units()
 	yield(discard_hand(), "completed")
-	yield(get_tree().create_timer(0.5), "timeout")
+	timer.start(0.5)
+	yield(timer, "timeout")
 	collect_coins()
-	yield(get_tree().create_timer(0.5), "timeout")
+	timer.start(0.5)
+	yield(timer, "timeout")
 	cardShop.fill_shop()
 	yield(get_tree(), "idle_frame")
 	cardShop.show()

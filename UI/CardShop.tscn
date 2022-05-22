@@ -43,52 +43,46 @@ card_list = [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource(
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 margin_left = 80.0
-margin_top = 60.0
+margin_top = 40.0
 margin_right = 560.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 480, 240 )
+margin_bottom = 320.0
+rect_min_size = Vector2( 480, 280 )
 custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 margin_right = 480.0
-margin_bottom = 240.0
-custom_constants/margin_right = 4
-custom_constants/margin_top = 4
-custom_constants/margin_left = 4
-custom_constants/margin_bottom = 4
+margin_bottom = 280.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 476.0
-margin_bottom = 236.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer"]
-margin_left = 108.0
-margin_top = 63.0
-margin_right = 364.0
-margin_bottom = 169.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 448.0
+margin_bottom = 248.0
 rect_min_size = Vector2( 256, 0 )
 custom_constants/separation = 8
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
-margin_right = 256.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 416.0
 margin_bottom = 20.0
 alignment = 1
 
-[node name="MaxCardsInHandLabel" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 57.0
+[node name="MaxCardsInHandLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 137.0
 margin_top = 7.0
-margin_right = 130.0
+margin_right = 210.0
 margin_bottom = 13.0
 custom_fonts/font = ExtResource( 4 )
 text = "Card Draw Limit: 3"
 align = 1
 valign = 1
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 134.0
-margin_right = 198.0
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 214.0
+margin_right = 278.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 64, 20 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
@@ -100,10 +94,10 @@ custom_styles/disabled = SubResource( 3 )
 custom_styles/normal = SubResource( 6 )
 text = "upgrade (+1)"
 
-[node name="TagAnchor" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/Button" instance=ExtResource( 8 )]
+[node name="TagAnchor" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Button" instance=ExtResource( 8 )]
 position = Vector2( 46, 0 )
 
-[node name="HandSizeUpgradeCostLabel" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+[node name="HandSizeUpgradeCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 visible = false
 margin_left = 169.0
 margin_top = 3.0
@@ -114,42 +108,43 @@ text = "(costs 10 coins)"
 align = 1
 valign = 1
 
-[node name="Space" type="Control" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="Space" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
 margin_top = 28.0
-margin_right = 256.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 0, 8 )
+margin_right = 416.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 16 )
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 44.0
-margin_right = 256.0
-margin_bottom = 50.0
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 416.0
+margin_bottom = 58.0
 custom_fonts/font = ExtResource( 4 )
 text = "Buy a new card?"
 align = 1
 valign = 1
 
-[node name="Space3" type="Control" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 58.0
-margin_right = 256.0
-margin_bottom = 66.0
+[node name="Space3" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 416.0
+margin_bottom = 74.0
 rect_min_size = Vector2( 0, 8 )
 
-[node name="Cards" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 74.0
-margin_right = 256.0
-margin_bottom = 74.0
+[node name="Cards" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 416.0
+margin_bottom = 82.0
 custom_constants/separation = 8
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 82.0
-margin_right = 256.0
-margin_bottom = 106.0
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 90.0
+margin_right = 416.0
+margin_bottom = 114.0
 rect_min_size = Vector2( 0, 24 )
 
-[node name="NotEnough" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
-margin_right = 126.0
+[node name="NotEnough" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+margin_right = 256.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 24 )
 size_flags_horizontal = 3
@@ -158,7 +153,8 @@ text = "Not enough gold for that card!"
 align = 1
 valign = 1
 
-[node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 margin_left = 130.0
 margin_right = 256.0
 margin_bottom = 24.0
@@ -195,6 +191,6 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/BuyButton" to="." method="_on_BuyButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuyButton" to="." method="_on_BuyButton_pressed"]
 [connection signal="pressed" from="PanelContainer/PassButton" to="." method="_on_PassButton_pressed"]

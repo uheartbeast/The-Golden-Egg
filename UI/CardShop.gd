@@ -19,6 +19,7 @@ signal card_purchased(CardScene)
 signal skipped
 
 func _ready():
+	Events.connect("card_clicked", self, "_on_card_clicked")
 	fill_shop()
 
 func fill_shop():
@@ -36,7 +37,7 @@ func fill_shop():
 
 func _physics_process(delta):
 	var selectedCard = ReferenceStash.selectedCard
-	buyButton.visible = (ReferenceStash.selectedCard is Card) and (playerStats.coins >= selectedCard.cost)
+#	buyButton.visible = (ReferenceStash.selectedCard is Card) and (playerStats.coins >= selectedCard.cost)
 	notEnough.visible = (ReferenceStash.selectedCard is Card) and (playerStats.coins < selectedCard.cost)
 
 func _on_BuyButton_pressed():
@@ -44,10 +45,24 @@ func _on_BuyButton_pressed():
 	if not selectedCard is Card: return
 	if playerStats.coins >= selectedCard.cost:
 		selectedCard.hide_tag()
-		emit_signal("card_purchased", load(selectedCard.filename))
+#		emit_signal("card_purchased", load(selectedCard.filename))
+		var CardScene = load(selectedCard.filename)
 		playerStats.coins -= selectedCard.cost
+		startingDeck.add_card(CardScene)
+		startingDeck.shuffle()
 	selectedCard.set_hover(false)
 	ReferenceStash.selectedCard = null
+
+func _on_card_clicked(card):
+	if not card.tag.visible: return
+	if playerStats.coins >= card.cost:
+		var CardScene = load(card.filename)
+		playerStats.coins -= card.cost
+		startingDeck.add_card(CardScene)
+		startingDeck.shuffle()
+		card.set_hover(false)
+		card.hide()
+		ReferenceStash.selectedCard = null
 
 func _on_PassButton_pressed():
 	var selectedCard = ReferenceStash.selectedCard

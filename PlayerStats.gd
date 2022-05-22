@@ -37,6 +37,7 @@ func set_coins_damage(value):
 	while coins_damage >= MAX_COINS_DAMAGE:
 		coins_damage = coins_damage - MAX_COINS_DAMAGE
 		coins_to_drop += 1
+	print(coins_to_drop)
 
 func refresh_mana():
 	set_mana(max_mana)

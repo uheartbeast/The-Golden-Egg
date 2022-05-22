@@ -8,7 +8,7 @@ onready var coin_collect_target_location = $CoinCollectTarget.global_position
 
 func _ready():
 	playerStats.connect("coins_changed", self, "_on_coins_changed")
-	playerStats.connect("mana_changed", self, "_on_mana_changed")
+#	playerStats.connect("mana_changed", self, "_on_mana_changed")
 
 func _on_coins_changed(coins, coins_change):
 	coinLabel.text = str(coins)
