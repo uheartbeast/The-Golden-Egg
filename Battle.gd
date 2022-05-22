@@ -93,10 +93,11 @@ func kill_units():
 		playerCreature.queue_free()
 
 func update_round_label():
-	roundLabel.text = "Round: "+str(playerStats.battle_round+1)
+	roundLabel.text = "Round: "+str(playerStats.visible_round+1)
 
 func _on_enemyTargetsStash_empty():
 	playerStats.battle_round += 1
+	playerStats.visible_round += 1
 	playerStats.refresh_mana()
 	kill_units()
 	yield(discard_hand(), "completed")
@@ -143,6 +144,7 @@ func _on_CardShop_card_purchased(CardScene):
 func _on_CardShop_skipped():
 	cardShop.hide()
 	startRoundButton.show()
+	update_round_label()
 
 func _on_GoldenEgg_tree_exited():
 	call_deferred("end_game")

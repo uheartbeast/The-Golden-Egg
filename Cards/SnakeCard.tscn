@@ -6,10 +6,10 @@
 
 [node name="SnakeCard" instance=ExtResource( 3 )]
 creatureStats = ExtResource( 1 )
-amount = 4
+amount = 8
 
 [node name="Title" parent="CardImage/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-text = "Four Snakes"
+text = "8 Snakes"
 
 [node name="Icon" parent="CardImage/MarginContainer/VBoxContainer/CenterContainer" index="0"]
 margin_left = 16.0
