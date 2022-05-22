@@ -4,7 +4,7 @@
 [ext_resource path="res://Spells/FireBlast.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 32.0
+radius = 16.0
 
 [sub_resource type="CanvasItemMaterial" id=7]
 blend_mode = 1
@@ -24,7 +24,7 @@ curve = SubResource( 9 )
 
 [sub_resource type="ParticlesMaterial" id=10]
 emission_shape = 1
-emission_sphere_radius = 28.0
+emission_sphere_radius = 16.0
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, -10, 0 )
@@ -39,7 +39,7 @@ scale_random = 1.0
 scale_curve = SubResource( 12 )
 color_ramp = SubResource( 11 )
 
-[node name="FireBlast" type="Area2D"]
+[node name="SmallBlast" type="Area2D"]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource( 1 )
@@ -48,9 +48,9 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.643137 )
+visible = false
 rotation = 0.523598
-scale = Vector2( 1.75, 1.75 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -60,7 +60,7 @@ autostart = true
 
 [node name="Particles2D" type="Particles2D" parent="."]
 material = SubResource( 7 )
-amount = 128
+amount = 48
 speed_scale = 3.0
 explosiveness = 1.0
 local_coords = false

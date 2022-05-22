@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Projectiles/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Spells/SmallBlast.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -11,14 +12,14 @@ blend_mode = 1
 [sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 1, 0.914063, 0, 1, 1, 0, 0, 0.352941 )
 
-[sub_resource type="GradientTexture" id=4]
+[sub_resource type="GradientTexture" id=8]
 gradient = SubResource( 3 )
 
 [sub_resource type="Curve" id=5]
 max_value = 2.0
 _data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.690909 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
+[sub_resource type="CurveTexture" id=9]
 curve = SubResource( 5 )
 
 [sub_resource type="ParticlesMaterial" id=7]
@@ -29,10 +30,11 @@ gravity = Vector3( 0, -50, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 4 )
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 8 )
 
 [node name="FireProjectile" instance=ExtResource( 1 )]
+SpellScene = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 1, 0.890196, 0, 1 )
