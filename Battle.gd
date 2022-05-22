@@ -127,7 +127,6 @@ func _unhandled_input(event):
 		playerStats.mana -= 1
 
 func end_game():
-	yield(get_tree().create_timer(1.0), "timeout")
 	get_tree().change_scene("res://Screens/DefeatScreen.tscn")
 
 func _on_StartRoundButton_pressed():

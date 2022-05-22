@@ -23,5 +23,5 @@ text = "+50% health"
 
 [node name="InfoTwo" parent="CardImage/MarginContainer/VBoxContainer" index="4"]
 margin_bottom = 71.0
-text = "#small +50
+text = "#small +100
 more health"

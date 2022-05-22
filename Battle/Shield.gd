@@ -1,7 +1,7 @@
 extends Area2D
 class_name Shield
 
-const MAX_HEALTH = 200
+const MAX_HEALTH = 80
 
 var health = MAX_HEALTH setget set_health
 

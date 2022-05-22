@@ -112,31 +112,30 @@ custom_fonts/font = ExtResource( 16 )
 text = "Gain +1 gold for each card left in your hand at the end of the round"
 
 [node name="SpawnLocation1" type="Position2D" parent="."]
-position = Vector2( 536, 136 )
+position = Vector2( 576, 112 )
 
 [node name="SpawnLocation2" type="Position2D" parent="."]
-position = Vector2( 152, 176 )
+position = Vector2( 48, 176 )
 
 [node name="SpawnLocation3" type="Position2D" parent="."]
-position = Vector2( 504, 208 )
+position = Vector2( 600, 216 )
 
 [node name="Rock" parent="." instance=ExtResource( 1 )]
-position = Vector2( 424, 104 )
+position = Vector2( 448, 120 )
 
 [node name="Rock2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 208, 184 )
+position = Vector2( 144, 184 )
 
 [node name="Rock6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 408, 232 )
+position = Vector2( 504, 200 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-polygon = PoolVector2Array( -32, -72, 712, -48, 656, 192, 616, 192, 624, 152, 600, 136, 600, 72, 536, 88, 488, 56, 448, 16, 416, 40, 376, 24, 312, 56, 256, 40, 216, 104, 144, 104, 104, 128, 32, 120, 24, 144, 16, 208, 32, 248, 80, 224, 112, 240, 136, 272, 176, 248, 208, 240, 240, 264, 304, 264, 392, 280, 432, 272, 464, 280, 488, 256, 528, 272, 568, 248, 616, 192, 656, 192, 728, 408, -48, 440, -112, 184 )
+polygon = PoolVector2Array( -32, -72, 712, -48, 696, 192, 616, 168, 624, 152, 640, 128, 664, 112, 656, 48, 552, 72, 488, 56, 448, 16, 416, 40, 376, 24, 312, 56, 256, 40, 216, 104, 144, 104, 104, 128, 32, 120, -24, 136, -40, 216, 32, 248, 80, 224, 112, 240, 136, 272, 176, 248, 208, 240, 240, 264, 304, 264, 392, 280, 432, 272, 464, 280, 488, 256, 528, 272, 616, 256, 664, 256, 704, 192, 728, 408, -48, 440, -112, 184 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2/CollisionPolygon2D"]
 color = Color( 0.164706, 0.164706, 0.164706, 1 )

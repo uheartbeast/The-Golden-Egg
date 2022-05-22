@@ -5,6 +5,7 @@ func _physics_process(delta):
 	for body in bodies:
 		if not is_instance_valid(body): continue
 		body.stats.attack *= 2
+		body.animationPlayer.play("Buff")
 		if CreatureStats.TAGS.SLOW in body.stats.tags: body.stats.attacks_per_second += 2
 	if not bodies.empty(): set_physics_process(false)
 
